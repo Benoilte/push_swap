@@ -6,25 +6,25 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2023/12/04 17:36:34 by bebrandt         ###   ########.fr        #
+#    Updated: 2023/12/08 15:30:19 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PUSH_NAME	=	push_swap
 
-PUSH_SRCS	=
+PUSH_SRCS	=	push_swap.c input_validation.c
 	
-PUSH_OBJ_NAME = $(PUSH_SRC_NAME:.c=.o)
+PUSH_OBJS = $(PUSH_SRCS:.c=.o)
 
-PUSH_OBJ = $(addprefix $(OBJ_DIR),$(PUSH_OBJ_NAME))
+PUSH_OBJ = $(addprefix $(OBJ_DIR),$(PUSH_OBJS))
 
 CHECK_NAME	=	checker
 
 CHECK_SRCS	=	
 
-CHECK_OBJ_NAME = $(CHECK_SRC_NAME:.c=.o)
+CHECK_OBJS = $(CHECK_SRCS:.c=.o)
 
-CHECK_OBJ = $(addprefix $(OBJ_DIR),$(CHECK_OBJ_NAME))
+CHECK_OBJ = $(addprefix $(OBJ_DIR),$(CHECK_OBJS))
 
 LIBFT_DIR		=	libft
 
@@ -34,7 +34,7 @@ PRINTF_DIR		=	libftprintf
 
 PRINTF_NAME		=	libftprintf.a
 
-HDRS		=	-I .
+HDRS		=	-I headers/.
 
 CC			=	gcc
 
@@ -46,39 +46,43 @@ LIB			=	ranlib
 
 RM			=	rm -f
 
-LIB_DIR = libft/
-PRINTF_DIR = printf/
-SRC_DIR = srcs/
-OBJ_DIR = objs/
+LIB_DIR		=	libft/
+PRINTF_DIR	=	printf/
+SRC_DIR		=	srcs/
+OBJ_DIR		=	objs/
 
-all: $(CHECK_NAME) $(PUSH_NAME)
+RED			=	\033[0;31m
+GREEN		=	\033[0;32m
+NONE		=	\033[0m
+
+all: $(PUSH_NAME)
 
 $(CHECK_NAME): $(CHECK_OBJ)
 	@make -C $(PRINTF_DIR) --silent
 	@gcc -o $(CHECK_NAME) $(CHECK_OBJ) -L $(PRINTF_DIR) -lftprintf
-	@echo "##### checker compiling finished! #####"
+	@echo "$(GREEN)##### checker compiling finished! #####$(NONE)"
 
 $(PUSH_NAME): $(PUSH_OBJ)
 	@make -C $(PRINTF_DIR) --silent
 	@gcc -o $(PUSH_NAME) $(PUSH_OBJ) -L $(PRINTF_DIR) -lftprintf
-	@echo "##### push_swap compiling finished! #####"
-
+	@echo "$(GREEN)##### push_swap compiling finished! #####$(NONE)"
+	
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@echo "##### Creating" [ $@ ] " #####"
+	@echo "$(GREEN)##### Creating" [ $@ ] " #####$(NONE)"
 	@gcc $(FLAGS) -o $@ -c $< $(HDRS)
 
 clean:
 	@make -C $(LIB_DIR) clean  --silent
 	@make -C $(PRINTF_DIR) clean  --silent
 	@rm -f $(CHECK_OBJ) $(PUSH_OBJ)
-	@echo "##### Removed object files #####"
+	@echo "$(RED)##### Removed object files #####$(NONE)"
 
 fclean: clean
 	@make -C $(LIB_DIR) fclean  --silent
 	@make -C $(PRINTF_DIR) fclean  --silent
 	@rm -f $(CHECK_NAME) $(PUSH_NAME)
-	@echo "##### Removed binary files #####"
+	@echo "$(RED)##### Removed binary files #####$(NONE)"
 
 re: fclean all
 
