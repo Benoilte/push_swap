@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 14:10:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:12:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,14 @@ int	int_is_valid(char *str)
 
 int	ints_are_uniq(t_list *stack_a)
 {
-	(void)stack_a;
-	ft_printf("welcome in ints_are_uniq function\n");
+	t_list	*tmp;
+
+	tmp = stack_a;
+	while (tmp->next)
+	{
+		if (*((int *)(tmp->content)) == *((int *)(tmp->next->content)))
+			return (ft_error());
+		tmp = tmp->next;
+	}
 	return (1);
 }
