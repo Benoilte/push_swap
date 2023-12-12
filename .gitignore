@@ -9,4 +9,5 @@ a.out
 .vscode/
 .editorconfig
 .metals/
+test.sh
 push_swap

@@ -6,8 +6,111 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/08 14:17:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:15:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+	The program must work with several numerical arguments
+		./push_swap 1 3 5 +9 20 -4 50 60 04 08
+	
+	The program also works if you receive a single character list as a parameter
+		./push_swap "3 4 6 8 9 74 -56 +495"
+
+	The program should NOT work if it encounters another character
+		./push_swap 1 3 dog 35 80 -3
+		./push_swap a
+		./push_swap 1 2 3 5 67b778 947
+		.push_swap " 12 4 6 8 54fhd 4354"
+		./push_swap 1 --    45 32
+			these examples should return "Error\n"
+
+	The program should NOT work if it encounters a double number
+		./push_swap 1 3 58 9 3
+		./push_swap 3 03
+		./push_swap " 49 128     50 38   49"
+			these examples should return "Error\n"
+		./push_swap "95 99 -9 10 9"
+			this example should work because -9 & 9 are not equal
+			
+	The program should work with INT MAX & INT MIN
+		./push_swap 2147483647 2 4 7
+		./push_swap 99 -2147483648 23 545
+		./push_swap "2147483647 843 56544 24394"
+			these examples should work and sort your list
+		./push_swap 54867543867438 3
+		./push_swap -2147483647765 4 5
+		./push_swap "214748364748385 28 47 29"
+			these examples should return "Error\n"
+			
+	The program should work when strings and int are mixed. Error condition shoul work the same.
+	./push_swap "1 2 4 3" 76 90 "348 05
+*/
+
+int	input_is_valid(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_strchr(argv[i], ' '))
+		{
+			if (string_is_valid(argv[i]))
+				i++;
+			else
+				return (ft_error());
+		}
+		else
+		{
+			if (string_is_valid(argv[i]))
+				i++;
+			else
+				return (ft_error());
+		}
+	}
+	return (1);
+}
+
+int	string_is_valid(char *str)
+{
+	char	**numbers;
+	int		i;
+
+	numbers = ft_split(str, ' ');
+	i = 0;
+	while (numbers[i])
+	{
+		if (int_is_valid(numbers[i]))
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	int_is_valid(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (i == 0 && (str[i] == '+' || str[i] == '-'))
+			i++;
+		if (ft_isdigit(str[i]))
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	ints_are_uniq(t_list *stack_a)
+{
+	(void)stack_a;
+	ft_printf("welcome in ints_are_uniq function\n");
+	return (1);
+}
