@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 14:21:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:46:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,23 @@ void	insert_int_in_stack(t_list **stack_a, int argc, int i, char **argv)
 
 void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 {
-	(void)stack_a;
-	(void)stack_b;
+	int	stack_size;
+
 	(void)operations;
-	ft_printf("welcome in sort_stack function\n");
+	(void)stack_b;
+	stack_size = ft_lstsize(*stack_a);
+	if (stack_size == 1)
+		return ;
+	else if (stack_size == 2)
+		ft_printf("2 stack size = %d\n", stack_size);
+	else if (stack_size == 3)
+		ft_printf("3 stack size = %d\n", stack_size);
+	else if (stack_size == 4)
+		ft_printf("4 stack size = %d\n", stack_size);
+	else if (stack_size == 5)
+		ft_printf("5 stack size = %d\n", stack_size);
+	else
+		ft_printf("6 stack size = %d\n", stack_size);
 }
 
 void	print_operations(t_list *operations)

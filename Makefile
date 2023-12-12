@@ -6,13 +6,15 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2023/12/12 13:52:16 by bebrandt         ###   ########.fr        #
+#    Updated: 2023/12/12 15:03:56 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PUSH_NAME	=	push_swap
 
-PUSH_SRCS	=	push_swap.c input_validation.c error.c safe_free.c
+PUSH_SRCS	=	push_swap.c sort_small_stack.c push_swap_algo.c input_validation.c \
+				operations_swap.c operations_push.c operations_reverse.c operations_rotate.c \
+				error.c safe_free.c
 	
 PUSH_OBJS = $(PUSH_SRCS:.c=.o)
 
