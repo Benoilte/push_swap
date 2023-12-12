@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 11:07:08 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:21:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,51 @@ int	main(int argc, char **argv)
 	if (argc >= 2)
 	{
 		if (input_is_valid(argc, argv))
-			insert_int_in_stack(stack_a, argc, argv);
+			insert_int_in_stack(&stack_a, argc, 1, argv);
 		else
 			return (1);
-		sort_stack(stack_a, stack_b, operations);
+		display_struct(stack_a, 'd', "n");
+		sort_stack(&stack_a, &stack_b, &operations);
 		if (ints_are_uniq(stack_a))
 			print_operations(operations);
 		else
+		{
+			ft_lstclear(&stack_a, &del);
 			return (1);
+		}
 	}
+	ft_lstclear(&stack_a, &del);
 	return (0);
 }
 
-void	insert_int_in_stack(t_list *stack_a, int argc, char **argv)
+void	insert_int_in_stack(t_list **stack_a, int argc, int i, char **argv)
 {
-	(void)stack_a;
-	(void)argc;
-	(void)argv;
-	ft_printf("welcome in insert_int_in_stack function\n");
+	int		*n;
+	int		size;
+	char	**numbers;
+
+	while (i < argc)
+	{
+		if (ft_strchr(argv[i], ' '))
+		{
+			numbers = ft_split(argv[i], ' ');
+			size = 0;
+			while (numbers[size])
+				size++;
+			insert_int_in_stack(stack_a, size, 0, numbers);
+			free_strstr(numbers);
+		}
+		else
+		{
+			n = ft_calloc(1, sizeof(int *));
+			*n = ft_atoi(argv[i]);
+			ft_lstadd_back(stack_a, ft_lstnew(n));
+		}
+		i++;
+	}
 }
 
-void	sort_stack(t_list *stack_a, t_list *stack_b, t_list *operations)
+void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 {
 	(void)stack_a;
 	(void)stack_b;
@@ -70,4 +94,23 @@ void	print_operations(t_list *operations)
 {
 	(void)operations;
 	ft_printf("welcome in print_operations function\n");
+}
+
+void	display_struct(t_list *lst, char data, char *text)
+{
+	t_list	*tmp;
+
+	tmp = lst;
+	if (tmp)
+		ft_printf("lst exist\n");
+	else
+		ft_printf("something is not working\n");
+	while (tmp)
+	{
+		if (data == 'd')
+			ft_printf("%s: %d\n", text, *((int *)(tmp->content)));
+		if (data == 's')
+			ft_printf("%s: %s\n", text, tmp->content);
+		tmp = tmp->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 13:30:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:10:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,12 @@ int	string_is_valid(char *str)
 		if (int_is_valid(numbers[i]))
 			i++;
 		else
+		{
+			free_strstr(numbers);
 			return (0);
+		}
 	}
+	free_strstr(numbers);
 	return (1);
 }
 
