@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 16:22:39 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:43:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ int	main(int argc, char **argv)
 		else
 		{
 			ft_lstclear(&stack_a, &del);
+			ft_lstclear(&operations, &del);
 			return (1);
 		}
 	}
 	ft_lstclear(&stack_a, &del);
+	ft_lstclear(&operations, &del);
 	return (0);
 }
 
@@ -106,8 +108,11 @@ void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 
 void	print_operations(t_list *operations)
 {
-	(void)operations;
-	ft_printf("welcome in print_operations function\n");
+	while (operations)
+	{
+		ft_printf("%s", operations->content);
+		operations = operations->next;
+	}
 }
 
 void	display_struct(t_list *lst, char data, char *text)
@@ -116,7 +121,7 @@ void	display_struct(t_list *lst, char data, char *text)
 
 	tmp = lst;
 	if (tmp)
-		ft_printf("lst exist\n");
+		ft_printf("Stack a\n");
 	else
 		ft_printf("something is not working\n");
 	while (tmp)

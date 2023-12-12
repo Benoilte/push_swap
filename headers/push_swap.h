@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 16:18:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:17:44 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ void	ft_rotate(t_list **stack);
 void	ft_ra(t_list **stack_a, t_list **operations);
 void	ft_rb(t_list **stack_b, t_list **operations);
 void	ft_rr(t_list **stack_a, t_list **stack_b, t_list **operations);
+
+// operations_rotate.c
+
+void	ft_reverse(t_list **stack);
+void	ft_rra(t_list **stack_a, t_list **operations);
+void	ft_rrb(t_list **stack_b, t_list **operations);
+void	ft_rrr(t_list **stack_a, t_list **stack_b, t_list **operations);
 
 // input_validation.c
 

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:00:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 16:26:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:16:34 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,47 @@ The first element becomes the last one.
 rr : ra and rb at the same time.
 */
 
+void	ft_rotate(t_list **stack)
+{
+	t_list	*last;
+	t_list	*tmp;
+
+	last = ft_lstlast(*stack);
+	tmp = *stack;
+	*stack = tmp->next;
+	last->next = tmp;
+	tmp->next = NULL;
+}
+
+void	ft_ra(t_list **stack_a, t_list **operations)
+{
+	char	*operation;
+
+	ft_rotate(stack_a);
+	operation = ft_strdup("ra\n");
+	ft_lstadd_back(operations, ft_lstnew(operation));
+}
+
+void	ft_rb(t_list **stack_b, t_list **operations)
+{
+	char	*operation;
+
+	ft_rotate(stack_b);
+	operation = ft_strdup("rb\n");
+	ft_lstadd_back(operations, ft_lstnew(operation));
+}
+
+void	ft_rr(t_list **stack_a, t_list **stack_b, t_list **operations)
+{
+	char	*operation;
+
+	ft_rotate(stack_a);
+	ft_rotate(stack_b);
+	operation = ft_strdup("rr\n");
+	ft_lstadd_back(operations, ft_lstnew(operation));
+}
+
+/*
 void	ft_rotate(t_list **stack)
 {
 	t_list	*last;
@@ -71,3 +112,4 @@ void	ft_rr(t_list **stack_a, t_list **stack_b, t_list **operations)
 	operation = ft_strdup("rb\n");
 	ft_lstadd_back(operations, ft_lstnew(operation));
 }
+*/
