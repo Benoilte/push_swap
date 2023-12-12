@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 12:15:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:30:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,12 @@ int	string_is_valid(char *str)
 
 int	int_is_valid(char *str)
 {
-	int	i;
+	int		i;
+	long	n;
 
+	n = ft_atoli(str);
+	if (n > INT_MAX || n < INT_MIN)
+		return (0);
 	i = 0;
 	while (str[i])
 	{
