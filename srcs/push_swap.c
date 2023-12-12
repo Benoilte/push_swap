@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 14:46:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:22:39 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 			return (1);
 		display_struct(stack_a, 'd', "n");
 		sort_stack(&stack_a, &stack_b, &operations);
+		display_struct(stack_a, 'd', "n");
 		if (ints_are_uniq(stack_a))
 			print_operations(operations);
 		else
@@ -92,9 +93,9 @@ void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 	if (stack_size == 1)
 		return ;
 	else if (stack_size == 2)
-		ft_printf("2 stack size = %d\n", stack_size);
+		sort_stack_of_2(stack_a, operations);
 	else if (stack_size == 3)
-		ft_printf("3 stack size = %d\n", stack_size);
+		sort_stack_of_3(stack_a, operations);
 	else if (stack_size == 4)
 		ft_printf("4 stack size = %d\n", stack_size);
 	else if (stack_size == 5)
