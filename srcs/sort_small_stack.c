@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:58:49 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 19:58:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 20:38:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ void	sort_stack_of_3(t_list **stack_a, t_list **operations)
 
 void	sort_stack_of_4(t_list **stack_a, t_list **operations)
 {
-	if (is_sorted_not_ordered(*stack_a))
+	move_min_on_top(stack_a, operations);
+	if (is_sorted(*stack_a))
 	{
-		ft_printf("\033[0;36mstack of 4 is sorted not in order\n\033[0m");
-		order_the_stack(stack_a, operations);
+		ft_printf("\033[0;36mstack of 4 is sorted\n\033[0m");
+		return ;
 	}
 }
 
@@ -64,6 +65,6 @@ void	sort_stack_of_5(t_list **stack_a, t_list **operations)
 	if (is_sorted_not_ordered(*stack_a))
 	{
 		ft_printf("\033[0;36mstack of 5 is sorted not in order\n\033[0m");
-		order_the_stack(stack_a, operations);
+		move_min_on_top(stack_a, operations);
 	}
 }

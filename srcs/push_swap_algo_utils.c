@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:22:34 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 19:54:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 20:32:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_list	*get_min_pos(t_list *stack_a)
 	return (min);
 }
 
-void	order_the_stack(t_list **stack_a, t_list **operations)
+void	move_min_on_top(t_list **stack_a, t_list **operations)
 {
 	t_list	*min;
 	t_list	*tmp;
