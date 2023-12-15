@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 21:17:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 21:55:10 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	display_struct(t_list *lst, char data, char *text);
 
 // sort_small_stack.c
 
-void	sort_stack_of_2(t_list **stack_a, t_list **operations);
+void	sort_stack_of_2(t_list **stack_a, char order, t_list **operations);
 void	sort_stack_of_3(t_list **stack_a, t_list **operations);
 void	sort_stack_of_4(t_list **stack_a, t_list **operations);
 void	sort_stack_of_5(t_list **stack_a, t_list **operations);

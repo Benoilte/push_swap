@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 21:05:55 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 21:55:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 	if (stack_size == 1)
 		return ;
 	else if (stack_size == 2)
-		sort_stack_of_2(stack_a, operations);
+		sort_stack_of_2(stack_a, 'a', operations);
 	else if (stack_size == 3)
 		sort_stack_of_3(stack_a, operations);
 	else if (stack_size == 4)
