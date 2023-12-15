@@ -29,6 +29,11 @@ echo ""
 echo "./push_swap 3 2 1 => 1 2 3"
 ./push_swap 3 2 1
 
+if [ "$1" != "" ]; then
+	echo ""
+	echo "./push_swap $ARG"
+	./push_swap $ARG
+fi
+
 echo ""
-echo "./push_swap $ARG"
-./push_swap $ARG
+echo "Fin des combinaisons."

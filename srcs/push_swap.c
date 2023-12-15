@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 16:43:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 19:58:21 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 	(void)operations;
 	(void)stack_b;
 	stack_size = ft_lstsize(*stack_a);
+	if (is_sorted(*stack_a))
+	{
+		ft_printf("\033[0;35mstack is sorted\n\033[0m");
+		return ;
+	}
 	if (stack_size == 1)
 		return ;
 	else if (stack_size == 2)
@@ -99,11 +104,11 @@ void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 	else if (stack_size == 3)
 		sort_stack_of_3(stack_a, operations);
 	else if (stack_size == 4)
-		ft_printf("4 stack size = %d\n", stack_size);
+		sort_stack_of_4(stack_a, operations);
 	else if (stack_size == 5)
-		ft_printf("5 stack size = %d\n", stack_size);
+		sort_stack_of_5(stack_a, operations);
 	else
-		ft_printf("6 stack size = %d\n", stack_size);
+		sort_big_stack(stack_a, operations);
 }
 
 void	print_operations(t_list *operations)

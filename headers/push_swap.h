@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 17:17:44 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 19:57:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@ void	display_struct(t_list *lst, char data, char *text);
 
 void	sort_stack_of_2(t_list **stack_a, t_list **operations);
 void	sort_stack_of_3(t_list **stack_a, t_list **operations);
+void	sort_stack_of_4(t_list **stack_a, t_list **operations);
+void	sort_stack_of_5(t_list **stack_a, t_list **operations);
+
+// push_swap_algo
+
+void	sort_big_stack(t_list **stack_a, t_list **operations);
+
+// push_swap_algo_utils
+
+int		is_sorted(t_list *stack_a);
+int		is_sorted_not_ordered(t_list *stack_a);
+t_list	*get_min_pos(t_list *stack_a);
+void	order_the_stack(t_list **stack_a, t_list **operations);
 
 // operations_swap.c
 
