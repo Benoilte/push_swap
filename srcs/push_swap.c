@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 19:58:21 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 21:05:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,15 @@ void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 
 void	print_operations(t_list *operations)
 {
-	while (operations)
+	t_list	*tmp;
+
+	tmp = operations;
+	while (tmp)
 	{
-		ft_printf("%s", operations->content);
-		operations = operations->next;
+		ft_printf("%s", tmp->content);
+		tmp = tmp->next;
 	}
+	ft_printf("\033[0;33moperations number = %d\n\033[0m", ft_lstsize(operations));
 }
 
 void	display_struct(t_list *lst, char data, char *text)

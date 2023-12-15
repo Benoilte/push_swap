@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:22:34 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 20:32:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 21:19:37 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,30 +67,42 @@ t_list	*get_min_pos(t_list *stack_a)
 	return (min);
 }
 
+int	get_min_pos_index(t_list *stack_a)
+{
+	t_list	*min;
+	t_list	*tmp;
+	int		pos_index;
+
+	pos_index = 0;
+	min = get_min_pos(stack_a);
+	tmp = stack_a;
+	while (tmp != min)
+	{
+		pos_index++;
+		tmp = tmp->next;
+	}
+	return (pos_index);
+}
+
 void	move_min_on_top(t_list **stack_a, t_list **operations)
 {
 	t_list	*min;
 	t_list	*tmp;
-	int		pos;
+	int		pos_index;
 	int		size;
 
-	pos = 0;
 	min = get_min_pos(*stack_a);
+	pos_index = get_min_pos_index(*stack_a);
 	tmp = *stack_a;
-	while (tmp != min)
-	{
-		pos++;
-		tmp = tmp->next;
-	}
 	size = ft_lstsize(*stack_a);
-	if (pos > (size / 2))
+	if (pos_index > (size / 2))
 	{
-		while (pos++ < size)
+		while (pos_index++ < size)
 			ft_rra(stack_a, operations);
 	}
 	else
 	{
-		while (pos-- > 0)
+		while (pos_index-- > 0)
 			ft_ra(stack_a, operations);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 20:32:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/15 21:17:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,23 @@ void	sort_stack_of_3(t_list **stack_a, t_list **operations);
 void	sort_stack_of_4(t_list **stack_a, t_list **operations);
 void	sort_stack_of_5(t_list **stack_a, t_list **operations);
 
-// push_swap_algo
+// push_swap_algo.c
 
 void	sort_big_stack(t_list **stack_a, t_list **operations);
 
-// push_swap_algo_utils
+// push_swap_algo_utils.c
 
 int		is_sorted(t_list *stack_a);
 int		is_sorted_not_ordered(t_list *stack_a);
 t_list	*get_min_pos(t_list *stack_a);
 void	move_min_on_top(t_list **stack_a, t_list **operations);
+int		get_min_pos_index(t_list *stack_a);
+
+// operations_push.c
+
+void	ft_push(t_list **stack_in, t_list **stack_out);
+void	ft_pa(t_list **stack_a, t_list **stack_b, t_list **operations);
+void	ft_pb(t_list **stack_b, t_list **stack_a, t_list **operations);
 
 // operations_swap.c
 
