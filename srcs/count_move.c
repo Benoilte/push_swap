@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/19 20:51:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 22:32:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,37 @@ int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in)
 {
 	int		lst_out_index;
 	int		lst_in_index;
-	int		move;
-	t_list	*tmp;
-	t_list	*min;
+	int		lst_out_size;
+	int		lst_in_size;
 
+	lst_out_size = ft_lstsize(stack_out);
+	lst_in_size = ft_lstsize(stack_in);
 	lst_out_index = get_lst_index(stack_out, lst);
 	lst_in_index = find_index_previous_number(lst, stack_in);
-	display_struct(stack_in, 'd', "stack_b");
-	ft_printf("index_in : %d\n", lst_in_index);
-	if ((lst_out_index < (ft_lstsize(stack_out) / 2)) && (lst_in_index < (ft_lstsize(stack_in) / 2)))
-		move = lst_out_index;
-	else if (lst_out_index < (ft_lstsize(stack_out) / 2))
-		move = lst_out_index;
-	else if (lst_out_index < (ft_lstsize(stack_out) / 2))
-		move = lst_out_index;
-	else if (lst_out_index < (ft_lstsize(stack_out) / 2))
-		move = lst_out_index;
-	return (move);
+	// ft_printf("lst : %d - index_in : %d - Index_out: %d\n", *((int *)(lst->content)), lst_in_index, lst_out_index);
+	// ft_printf("size_in : %d - size_out: %d\n", lst_in_size, lst_out_size);
+	if ((lst_out_index > (ft_lstsize(stack_out) / 2)))
+	{
+		if ((lst_in_index > (ft_lstsize(stack_in) / 2)))
+			return (count_move_with_shortcut(lst_in_size, lst_out_size) + 1);
+		else
+			return (lst_in_index + (lst_out_size - lst_out_index) + 1);
+	}
+	else
+	{
+		if ((lst_in_index <= (ft_lstsize(stack_in) / 2)))
+			return (count_move_with_shortcut(lst_in_index, lst_out_index) + 1);
+		else
+			return ((lst_in_size - lst_in_index) + lst_out_index + 1);
+	}
+}
+
+int	count_move_with_shortcut(int index_in, int index_out)
+{
+	if (index_in > index_out)
+		return (index_in);
+	else
+		return (index_out);
 }
 
 int	find_index_previous_number(t_list *lst, t_list *stack)

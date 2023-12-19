@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:22:34 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/19 20:37:06 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 00:11:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	get_lst_index(t_list *stack_a, t_list *lst)
 	return (lst_index);
 }
 
-void	move_lst_on_top(t_list **stack_a, t_list **operations, t_list *lst)
+void	move_lst_on_top_of_a(t_list **stack_a, t_list **operations, t_list *lst)
 {
 	t_list	*tmp;
 	int		lst_index;
@@ -68,7 +68,6 @@ void	move_lst_on_top(t_list **stack_a, t_list **operations, t_list *lst)
 	lst_index = get_lst_index(*stack_a, lst);
 	tmp = *stack_a;
 	size = ft_lstsize(*stack_a);
-	ft_printf("min_index: %d\n", lst_index);
 	if (lst_index > (size / 2))
 	{
 		while (lst_index++ < size)
@@ -78,5 +77,24 @@ void	move_lst_on_top(t_list **stack_a, t_list **operations, t_list *lst)
 	{
 		while (lst_index-- > 0)
 			ft_ra(stack_a, operations);
+	}
+}
+
+void	move_lst_on_top_of_b(t_list **stack_a, t_list **operations, int index)
+{
+	t_list	*tmp;
+	int		size;
+
+	tmp = *stack_a;
+	size = ft_lstsize(*stack_a);
+	if (index > (size / 2))
+	{
+		while (index++ < size)
+			ft_rrb(stack_a, operations);
+	}
+	else
+	{
+		while (index-- > 0)
+			ft_rb(stack_a, operations);
 	}
 }

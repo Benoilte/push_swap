@@ -6,17 +6,17 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:00:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/19 19:42:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 23:53:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
 /*
-ra (rotate a): Shift up all elements of stack a by 1. 
+ra (rotate a): Shift up all elements of stack a by 1.
 The first element becomes the last one.
 
-rb (rotate b): Shift up all elements of stack b by 1. 
+rb (rotate b): Shift up all elements of stack b by 1.
 The first element becomes the last one.
 
 rr : ra and rb at the same time.
@@ -60,6 +60,31 @@ void	ft_rr(t_list **stack_a, t_list **stack_b, t_list **operations)
 	ft_rotate(stack_b);
 	operation = ft_strdup("rr\n");
 	ft_lstadd_back(operations, ft_lstnew(operation));
+}
+
+void	rotate_both(t_list **out, t_list **in, t_list *cheapest, t_list **op)
+{
+	int		out_index;
+	int		in_index;
+
+	out_index = get_lst_index(*out, cheapest);
+	in_index = find_index_previous_number(cheapest, *in);
+	if (in_index > out_index)
+	{
+		while (out_index)
+		{
+			ft_rr(out, in, op);
+			out_index--;
+		}
+	}
+	else
+	{
+		while (in_index)
+		{
+			ft_rr(out, in, op);
+			in_index--;
+		}
+	}
 }
 
 /*
