@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 21:55:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 21:01:10 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 /*
 1. check if input are valid number
 	1.1 if input is not valid, return "ERROR/n" and exit the program
@@ -41,15 +41,16 @@ int	main(int argc, char **argv)
 			insert_int_in_stack(&stack_a, argc, 1, argv);
 		else
 			return (1);
-		display_struct(stack_a, 'd', "n");
-		sort_stack(&stack_a, &stack_b, &operations);
-		display_struct(stack_a, 'd', "n");
 		if (ints_are_uniq(stack_a))
+		{
+			display_struct(stack_a, 'd', "n");
+			sort_stack(&stack_a, &stack_b, &operations);
+			display_struct(stack_a, 'd', "n");
 			print_operations(operations);
+		}
 		else
 		{
 			ft_lstclear(&stack_a, &del);
-			ft_lstclear(&operations, &del);
 			return (1);
 		}
 	}
@@ -103,10 +104,8 @@ void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations)
 		sort_stack_of_2(stack_a, 'a', operations);
 	else if (stack_size == 3)
 		sort_stack_of_3(stack_a, operations);
-	else if (stack_size == 4)
-		sort_stack_of_4(stack_a, operations);
-	else if (stack_size == 5)
-		sort_stack_of_5(stack_a, operations);
+	else if (stack_size <= 5)
+		sort_stack_of_4_or_5(stack_a, operations);
 	else
 		sort_big_stack(stack_a, operations);
 }

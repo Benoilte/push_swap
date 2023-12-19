@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 21:55:10 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 20:38:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,29 @@ void	display_struct(t_list *lst, char data, char *text);
 
 void	sort_stack_of_2(t_list **stack_a, char order, t_list **operations);
 void	sort_stack_of_3(t_list **stack_a, t_list **operations);
-void	sort_stack_of_4(t_list **stack_a, t_list **operations);
-void	sort_stack_of_5(t_list **stack_a, t_list **operations);
+void	sort_stack_of_4_or_5(t_list **stack_a, t_list **operations);
 
 // push_swap_algo.c
 
 void	sort_big_stack(t_list **stack_a, t_list **operations);
+t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in);
 
-// push_swap_algo_utils.c
+// count_move.c
+
+int		count_move(t_list *lst, t_list *stack_out, t_list *stack_in);
+int		find_index_previous_number(t_list *lst, t_list *stack);
+
+// check_sorted_stack.c
 
 int		is_sorted(t_list *stack_a);
 int		is_sorted_not_ordered(t_list *stack_a);
-t_list	*get_min_pos(t_list *stack_a);
-void	move_min_on_top(t_list **stack_a, t_list **operations);
-int		get_min_pos_index(t_list *stack_a);
+
+// push_swap_algo_utils.c
+
+t_list	*get_min(t_list *stack);
+t_list	*get_max(t_list *stack);
+void	move_lst_on_top(t_list **stack_a, t_list **operations, t_list *lst);
+int		get_lst_index(t_list *stack_a, t_list *lst);
 
 // operations_push.c
 

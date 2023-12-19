@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:00:09 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 17:19:28 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:45:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 /*
 rra (reverse rotate a): Shift down all elements of stack a by 1.

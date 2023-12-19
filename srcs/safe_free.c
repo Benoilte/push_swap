@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:51:54 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 14:19:18 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:43:02 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 void	*free_strstr(char **numbers)
 {

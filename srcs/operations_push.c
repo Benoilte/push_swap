@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:58:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/15 20:50:55 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:42:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 /*
 pa (push a): Take the first element at the top of b and put it at the top of a.

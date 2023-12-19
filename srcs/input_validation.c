@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 18:12:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 21:04:38 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 /*
 	The program must work with several numerical arguments
@@ -118,14 +118,20 @@ int	int_is_valid(char *str)
 
 int	ints_are_uniq(t_list *stack_a)
 {
-	t_list	*tmp;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
-	tmp = stack_a;
-	while (tmp->next)
+	tmp1 = stack_a;
+	while (tmp1)
 	{
-		if (*((int *)(tmp->content)) == *((int *)(tmp->next->content)))
-			return (ft_error());
-		tmp = tmp->next;
+		tmp2 = tmp1->next;
+		while (tmp2)
+		{
+			if (*((int *)(tmp1->content)) == *((int *)(tmp2->content)))
+				return (ft_error());
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
 	}
 	return (1);
 }

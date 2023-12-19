@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:00:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/12 17:16:34 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:42:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../headers/push_swap.h"
 
 /*
 ra (rotate a): Shift up all elements of stack a by 1. 
