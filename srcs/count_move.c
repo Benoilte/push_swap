@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 11:10:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:47:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,32 @@ Calculer nombre de mouvement dans stack in pour amener lst en bonne position (or
 Comparer si il y a une similitude de ra - rb ou rra - rrb operation.
 */
 
-int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in)
+int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char inner)
 {
-	int		lst_out_index;
-	int		lst_in_index;
 	int		lst_out_size;
 	int		lst_in_size;
+	t_index	pos;
 
 	lst_out_size = ft_lstsize(stack_out);
 	lst_in_size = ft_lstsize(stack_in);
-	lst_out_index = get_lst_index(stack_out, lst);
-	lst_in_index = find_new_position_in_stack_b(lst, stack_in);
-	// ft_printf("lst : %d - index_in : %d - Index_out: %d\n", *((int *)(lst->content)), lst_in_index, lst_out_index);
-	// ft_printf("size_in : %d - size_out: %d\n", lst_in_size, lst_out_size);
-	if ((lst_out_index > (ft_lstsize(stack_out) / 2)))
+	pos.out = get_lst_index(stack_out, lst);
+	if (inner == 'a')
+		pos.in = find_new_position_in_stack_a(lst, stack_in);
+	else if (inner == 'b')
+		pos.in = find_new_position_in_stack_b(lst, stack_in);
+	if ((pos.out > (ft_lstsize(stack_out) / 2)))
 	{
-		if ((lst_in_index > (ft_lstsize(stack_in) / 2)))
+		if ((pos.in > (ft_lstsize(stack_in) / 2)))
 			return (count_move_with_shortcut(lst_in_size, lst_out_size) + 1);
 		else
-			return (lst_in_index + (lst_out_size - lst_out_index) + 1);
+			return (pos.in + (lst_out_size - pos.out) + 1);
 	}
 	else
 	{
-		if ((lst_in_index <= (ft_lstsize(stack_in) / 2)))
-			return (count_move_with_shortcut(lst_in_index, lst_out_index) + 1);
+		if ((pos.in <= (ft_lstsize(stack_in) / 2)))
+			return (count_move_with_shortcut(pos.in, pos.out) + 1);
 		else
-			return ((lst_in_size - lst_in_index) + lst_out_index + 1);
+			return ((lst_in_size - pos.in) + pos.out + 1);
 	}
 }
 

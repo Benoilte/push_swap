@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 11:31:55 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:44:54 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 	sort_stack_of_3(stack_a, operations);
 	while (ft_lstsize(stack_b) > 0)
 	{
-		cheapest = find_cheapest_number(stack_b, *stack_a);
 		// move_lst_on_top_of_b(&stack_b, operations, );
 		ft_pa(stack_a, &stack_b, operations);
 	}
@@ -51,13 +50,12 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 
 void	move_a_to_b(t_list **out, t_list **in, t_list **operations)
 {
-	int		out_index;
 	int		out_size;
 	int		in_size;
 	t_list	*cheapest;
 	t_index	pos;
 
-	cheapest = find_cheapest_number(*out, *in);
+	cheapest = find_cheapest_number(*out, *in, 'b');
 	out_size = ft_lstsize(*out);
 	in_size = ft_lstsize(*in);
 	pos.out = get_lst_index(*out, cheapest);
@@ -78,21 +76,21 @@ void	move_a_to_b(t_list **out, t_list **in, t_list **operations)
 		move_lst_on_top_of_a(out, operations, pos.out - pos.in);
 }
 
-t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in)
+t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner)
 {
 	t_list	*tmp;
 	t_list	*cheapest;
 	int		move;
 
 	tmp = stack_out;
-	move = count_move(tmp, stack_out, stack_in);
+	move = count_move(tmp, stack_out, stack_in, inner);
 	cheapest = tmp;
 	tmp = tmp->next;
 	while (tmp)
 	{
-		if (count_move(tmp, stack_out, stack_in) < move)
+		if ((count_move(tmp, stack_out, stack_in, inner) < move))
 		{
-			move = count_move(tmp, stack_out, stack_in);
+			move = count_move(tmp, stack_out, stack_in, inner);
 			cheapest = tmp;
 		}
 		tmp = tmp->next;

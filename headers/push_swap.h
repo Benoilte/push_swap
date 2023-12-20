@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 11:35:28 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:41:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_stack_of_4_or_5(t_list **stack_a, t_list **operations);
 
 void	sort_big_stack(t_list **stack_a, t_list **operations);
 void	move_a_to_b(t_list **out, t_list **in, t_list **operations);
-t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in);
+t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner);
 
 typedef struct s_index
 {
@@ -46,9 +46,10 @@ typedef struct s_index
 
 // count_move.c
 
-int		count_move(t_list *lst, t_list *stack_out, t_list *stack_in);
+int		count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char inner);
 int		count_move_with_shortcut(int index_in, int index_out);
 int		find_new_position_in_stack_b(t_list *lst, t_list *stack);
+int		find_new_position_in_stack_a(t_list *lst, t_list *stack);
 
 // check_sorted_stack.c
 
