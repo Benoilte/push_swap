@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:00:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/19 23:53:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:34:18 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ void	ft_rr(t_list **stack_a, t_list **stack_b, t_list **operations)
 	ft_lstadd_back(operations, ft_lstnew(operation));
 }
 
-void	rotate_both(t_list **out, t_list **in, t_list *cheapest, t_list **op)
+void	rotate_both(t_list **out, t_list **in, t_index pos, t_list **op)
 {
 	int		out_index;
 	int		in_index;
 
-	out_index = get_lst_index(*out, cheapest);
-	in_index = find_index_previous_number(cheapest, *in);
+	out_index = pos.out;
+	in_index = pos.in;
 	if (in_index > out_index)
 	{
 		while (out_index)

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 00:09:55 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:35:28 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,17 @@ void	sort_big_stack(t_list **stack_a, t_list **operations);
 void	move_a_to_b(t_list **out, t_list **in, t_list **operations);
 t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in);
 
+typedef struct s_index
+{
+	int			out;
+	int			in;
+}		t_index;
+
 // count_move.c
 
 int		count_move(t_list *lst, t_list *stack_out, t_list *stack_in);
 int		count_move_with_shortcut(int index_in, int index_out);
-int		find_index_previous_number(t_list *lst, t_list *stack);
+int		find_new_position_in_stack_b(t_list *lst, t_list *stack);
 
 // check_sorted_stack.c
 
@@ -53,7 +59,7 @@ int		is_sorted_not_ordered(t_list *stack_a);
 
 t_list	*get_min(t_list *stack);
 t_list	*get_max(t_list *stack);
-void	move_lst_on_top_of_a(t_list **stack_a, t_list **operations, t_list *lst);
+void	move_lst_on_top_of_a(t_list **stack_a, t_list **operations, int index);
 void	move_lst_on_top_of_b(t_list **stack_a, t_list **operations, int index);
 int		get_lst_index(t_list *stack_a, t_list *lst);
 
@@ -76,7 +82,7 @@ void	ft_rotate(t_list **stack);
 void	ft_ra(t_list **stack_a, t_list **operations);
 void	ft_rb(t_list **stack_b, t_list **operations);
 void	ft_rr(t_list **stack_a, t_list **stack_b, t_list **operations);
-void	rotate_both(t_list **out, t_list **in, t_list *cheapest, t_list **op);
+void	rotate_both(t_list **out, t_list **in, t_index pos, t_list **op);
 
 // operations_reverse.c
 
@@ -84,7 +90,7 @@ void	ft_reverse(t_list **stack);
 void	ft_rra(t_list **stack_a, t_list **operations);
 void	ft_rrb(t_list **stack_b, t_list **operations);
 void	ft_rrr(t_list **stack_a, t_list **stack_b, t_list **operations);
-void	reverse_both(t_list **out, t_list **in, t_list *cheapest, t_list **op);
+void	reverse_both(t_list **out, t_list **in, t_index pos, t_list **op);
 
 // input_validation.c
 

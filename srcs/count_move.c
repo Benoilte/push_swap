@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/19 22:32:51 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:10:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in)
 	lst_out_size = ft_lstsize(stack_out);
 	lst_in_size = ft_lstsize(stack_in);
 	lst_out_index = get_lst_index(stack_out, lst);
-	lst_in_index = find_index_previous_number(lst, stack_in);
+	lst_in_index = find_new_position_in_stack_b(lst, stack_in);
 	// ft_printf("lst : %d - index_in : %d - Index_out: %d\n", *((int *)(lst->content)), lst_in_index, lst_out_index);
 	// ft_printf("size_in : %d - size_out: %d\n", lst_in_size, lst_out_size);
 	if ((lst_out_index > (ft_lstsize(stack_out) / 2)))
@@ -59,7 +59,7 @@ int	count_move_with_shortcut(int index_in, int index_out)
 		return (index_out);
 }
 
-int	find_index_previous_number(t_list *lst, t_list *stack)
+int	find_new_position_in_stack_b(t_list *lst, t_list *stack)
 {
 	int		index;
 	t_list	*tmp;
@@ -78,6 +78,31 @@ int	find_index_previous_number(t_list *lst, t_list *stack)
 	{
 		if ((*((int *)(lst->content)) < *((int *)(tmp->content)))
 			&& (*((int *)(lst->content)) > *((int *)(tmp->next->content))))
+			return (get_lst_index(stack, tmp->next));
+		tmp = tmp->next;
+	}
+	return (index);
+}
+
+int	find_new_position_in_stack_a(t_list *lst, t_list *stack)
+{
+	int		index;
+	t_list	*tmp;
+	t_list	*min;
+	t_list	*max;
+
+	index = -1;
+	min = get_min(stack);
+	max = get_max(stack);
+	if (*((int *)(lst->content)) < *((int *)(min->content)))
+		return (get_lst_index(stack, min));
+	if (*((int *)(lst->content)) > *((int *)(max->content)))
+		return (get_lst_index(stack, min));
+	tmp = stack;
+	while (tmp->next)
+	{
+		if ((*((int *)(lst->content)) > *((int *)(tmp->content)))
+			&& (*((int *)(lst->content)) < *((int *)(tmp->next->content))))
 			return (get_lst_index(stack, tmp->next));
 		tmp = tmp->next;
 	}

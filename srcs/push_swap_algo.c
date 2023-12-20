@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 00:20:30 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 11:31:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 {
 	t_list	*stack_b;
 	t_list	*cheapest;
+	int		min_pos;
 
 	stack_b = NULL;
 	if (is_sorted_not_ordered(*stack_a))
 	{
-		ft_printf("\033[0;36mstack bigger than 5 is sorted not in order\n\033[0m");
-		move_lst_on_top_of_a(stack_a, operations, get_min(*stack_a));
+		min_pos = get_lst_index(*stack_a, get_min(*stack_a));
+		move_lst_on_top_of_a(stack_a, operations, min_pos);
 		return ;
 	}
 	ft_pb(&stack_b, stack_a, operations);
 	ft_pb(&stack_b, stack_a, operations);
-	// display_struct(*stack_a, 'd', "stac_a");
 	while (ft_lstsize(*stack_a) > 3)
 	{
 		move_a_to_b(stack_a, &stack_b, operations);
@@ -52,30 +52,30 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 void	move_a_to_b(t_list **out, t_list **in, t_list **operations)
 {
 	int		out_index;
-	int		in_index;
 	int		out_size;
 	int		in_size;
 	t_list	*cheapest;
+	t_index	pos;
 
 	cheapest = find_cheapest_number(*out, *in);
 	out_size = ft_lstsize(*out);
 	in_size = ft_lstsize(*in);
-	out_index = get_lst_index(*out, cheapest);
-	in_index = find_index_previous_number(cheapest, *in);
-	if ((out_index > (out_size / 2)) && (in_index > (in_size / 2)))
-		reverse_both(out, in, cheapest, operations);
-	else if ((out_index <= (out_size / 2)) && (in_index <= (in_size / 2)))
-		rotate_both(out, in, cheapest, operations);
+	pos.out = get_lst_index(*out, cheapest);
+	pos.in = find_new_position_in_stack_b(cheapest, *in);
+	if ((pos.out > (out_size / 2)) && (pos.in > (in_size / 2)))
+		reverse_both(out, in, pos, operations);
+	else if ((pos.out <= (out_size / 2)) && (pos.in <= (in_size / 2)))
+		rotate_both(out, in, pos, operations);
 	else
 	{
-		move_lst_on_top_of_a(out, operations, cheapest);
-		move_lst_on_top_of_b(in, operations, in_index);
+		move_lst_on_top_of_a(out, operations, pos.out);
+		move_lst_on_top_of_b(in, operations, pos.in);
 		return ;
 	}
-	if (in_index > out_index)
-		move_lst_on_top_of_b(in, operations, in_index - out_index);
-	else if (out_index > in_index)
-		move_lst_on_top_of_a(out, operations, cheapest);
+	if (pos.in > pos.out)
+		move_lst_on_top_of_b(in, operations, pos.in - pos.out);
+	else if (pos.out > pos.in)
+		move_lst_on_top_of_a(out, operations, pos.out - pos.in);
 }
 
 t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in)
