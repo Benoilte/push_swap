@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:22:34 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 10:39:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:59:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,21 @@ void	move_lst_on_top_of_a(t_list **stack_a, t_list **operations, int index)
 	}
 }
 
-void	move_lst_on_top_of_b(t_list **stack_a, t_list **operations, int index)
+void	move_lst_on_top_of_b(t_list **stack_b, t_list **operations, int index)
 {
 	t_list	*tmp;
 	int		size;
 
-	tmp = *stack_a;
-	size = ft_lstsize(*stack_a);
+	tmp = *stack_b;
+	size = ft_lstsize(*stack_b);
 	if (index > (size / 2))
 	{
 		while (index++ < size)
-			ft_rrb(stack_a, operations);
+			ft_rrb(stack_b, operations);
 	}
 	else
 	{
 		while (index-- > 0)
-			ft_rb(stack_a, operations);
+			ft_rb(stack_b, operations);
 	}
 }

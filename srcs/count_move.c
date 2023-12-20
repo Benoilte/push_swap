@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 18:47:03 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:40:22 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 /*
 Trouver la position de lst dans stack out.
-Calculer nombre de mouvement dans stack out a effectuer pour amener lst en prmière position.
+Calculer nombre de mouvement dans stack out a effectuer
+pour amener lst en prmière position.
 
 trouver la position ou lst doit aller dans stack in.
-Calculer nombre de mouvement dans stack in pour amener lst en bonne position (ordrée)
+Calculer nombre de mouvement dans stack in pour amener
+lst en bonne position (ordrée)
 
 Comparer si il y a une similitude de ra - rb ou rra - rrb operation.
 */
@@ -81,6 +83,9 @@ int	find_new_position_in_stack_b(t_list *lst, t_list *stack)
 			return (get_lst_index(stack, tmp->next));
 		tmp = tmp->next;
 	}
+	if ((*((int *)(lst->content)) < *((int *)(tmp->content)))
+		&& (*((int *)(lst->content)) > *((int *)(stack->content))))
+		return (get_lst_index(stack, stack));
 	return (index);
 }
 
@@ -106,5 +111,8 @@ int	find_new_position_in_stack_a(t_list *lst, t_list *stack)
 			return (get_lst_index(stack, tmp->next));
 		tmp = tmp->next;
 	}
+	if ((*((int *)(lst->content)) > *((int *)(tmp->content)))
+		&& (*((int *)(lst->content)) < *((int *)(stack->content))))
+		return (get_lst_index(stack, stack));
 	return (index);
 }

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 18:41:07 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:59:57 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	sort_stack_of_4_or_5(t_list **stack_a, t_list **operations);
 
 void	sort_big_stack(t_list **stack_a, t_list **operations);
 void	move_a_to_b(t_list **out, t_list **in, t_list **operations);
+void	move_b_to_a(t_list **out, t_list **in, t_list **operations);
 t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner);
 
 typedef struct s_index
@@ -61,7 +62,7 @@ int		is_sorted_not_ordered(t_list *stack_a);
 t_list	*get_min(t_list *stack);
 t_list	*get_max(t_list *stack);
 void	move_lst_on_top_of_a(t_list **stack_a, t_list **operations, int index);
-void	move_lst_on_top_of_b(t_list **stack_a, t_list **operations, int index);
+void	move_lst_on_top_of_b(t_list **stack_b, t_list **operations, int index);
 int		get_lst_index(t_list *stack_a, t_list *lst);
 
 // operations_push.c
