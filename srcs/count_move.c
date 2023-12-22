@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 19:40:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/22 08:32:02 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,7 @@ int	find_new_position_in_stack_b(t_list *lst, t_list *stack)
 			return (get_lst_index(stack, tmp->next));
 		tmp = tmp->next;
 	}
-	if ((*((int *)(lst->content)) < *((int *)(tmp->content)))
-		&& (*((int *)(lst->content)) > *((int *)(stack->content))))
-		return (get_lst_index(stack, stack));
-	return (index);
+	return (0);
 }
 
 int	find_new_position_in_stack_a(t_list *lst, t_list *stack)
@@ -111,8 +108,5 @@ int	find_new_position_in_stack_a(t_list *lst, t_list *stack)
 			return (get_lst_index(stack, tmp->next));
 		tmp = tmp->next;
 	}
-	if ((*((int *)(lst->content)) > *((int *)(tmp->content)))
-		&& (*((int *)(lst->content)) < *((int *)(stack->content))))
-		return (get_lst_index(stack, stack));
-	return (index);
+	return (0);
 }

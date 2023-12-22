@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/19 21:01:10 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:09:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ int	main(int argc, char **argv)
 			display_struct(stack_a, 'd', "n");
 			sort_stack(&stack_a, &stack_b, &operations);
 			display_struct(stack_a, 'd', "n");
-			print_operations(operations);
+			// print_operations(operations);
+			ft_printf("\033[0;33moperations number = %d\n\033[0m", ft_lstsize(operations));
 		}
 		else
 		{
 			ft_lstclear(&stack_a, &del);
+			ft_printf("same ints present");
 			return (1);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 18:59:57 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/22 10:42:18 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ void	sort_stack_of_4_or_5(t_list **stack_a, t_list **operations);
 // push_swap_algo.c
 
 void	sort_big_stack(t_list **stack_a, t_list **operations);
-void	move_a_to_b(t_list **out, t_list **in, t_list **operations);
+void	move_a_to_b(t_list **out, t_list **in, t_list **operations, t_list *range);
 void	move_b_to_a(t_list **out, t_list **in, t_list **operations);
-t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner);
+t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner, t_list *range);
+int		ft_include(t_list *lst, t_list *range);
 
 typedef struct s_index
 {
@@ -56,6 +57,9 @@ int		find_new_position_in_stack_a(t_list *lst, t_list *stack);
 
 int		is_sorted(t_list *stack_a);
 int		is_sorted_not_ordered(t_list *stack_a);
+void	find_biggest_sorted_range(t_list *stack, t_list **range);
+int		count_sorted_range_size(t_list *stack, t_list *lst, t_list *min);
+void	copy_range(t_list *stack, t_list *first, int size, t_list **range);
 
 // push_swap_algo_utils.c
 
