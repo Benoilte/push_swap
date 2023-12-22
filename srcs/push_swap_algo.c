@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/22 11:20:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:46:11 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,21 +120,18 @@ t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner, t_
 		tmp = tmp->next;
 	move = count_move(tmp, stack_out, stack_in, inner);
 	cheapest = tmp;
-	tmp = tmp->next;
 	while (tmp)
 	{
+		while (tmp && ft_include(tmp, range))
+			tmp = tmp->next;
+		if (!tmp)
+			break ;
 		if ((count_move(tmp, stack_out, stack_in, inner) < move))
 		{
 			move = count_move(tmp, stack_out, stack_in, inner);
 			cheapest = tmp;
 		}
-		if (tmp && ft_include(tmp, range))
-		{
-			while (tmp && ft_include(tmp, range))
-				tmp = tmp->next;
-		}
-		else
-			tmp = tmp->next;
+		tmp = tmp->next;
 	}
 	return (cheapest);
 }
