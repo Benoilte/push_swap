@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:00:09 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 11:32:59 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:49:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ void	ft_rra(t_list **stack_a, t_list **operations)
 	char	*operation;
 
 	ft_reverse(stack_a);
-	operation = ft_strdup("rra\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
+	if (operations)
+	{
+		operation = ft_strdup("rra\n");
+		ft_lstadd_back(operations, ft_lstnew(operation));
+	}
 }
 
 void	ft_rrb(t_list **stack_b, t_list **operations)
@@ -54,8 +57,11 @@ void	ft_rrb(t_list **stack_b, t_list **operations)
 	char	*operation;
 
 	ft_reverse(stack_b);
-	operation = ft_strdup("rrb\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
+	if (operations)
+	{
+		operation = ft_strdup("rrb\n");
+		ft_lstadd_back(operations, ft_lstnew(operation));
+	}
 }
 
 void	ft_rrr(t_list **stack_a, t_list **stack_b, t_list **operations)
@@ -64,8 +70,11 @@ void	ft_rrr(t_list **stack_a, t_list **stack_b, t_list **operations)
 
 	ft_reverse(stack_a);
 	ft_reverse(stack_b);
-	operation = ft_strdup("rrr\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
+	if (operations)
+	{
+		operation = ft_strdup("rrr\n");
+		ft_lstadd_back(operations, ft_lstnew(operation));
+	}
 }
 
 void	reverse_both(t_list **out, t_list **in, t_index pos, t_list **op)
@@ -73,8 +82,8 @@ void	reverse_both(t_list **out, t_list **in, t_index pos, t_list **op)
 	int		out_index;
 	int		in_index;
 
-	out_index = pos.out;
-	in_index = pos.in;
+	out_index = ft_lstsize(*out) - pos.out;
+	in_index = ft_lstsize(*in) - pos.in;
 	if (in_index > out_index)
 	{
 		while (out_index)

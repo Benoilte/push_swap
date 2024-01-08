@@ -6,43 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:22:34 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 18:59:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:00:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
-
-t_list	*get_min(t_list *stack)
-{
-	t_list	*min;
-	t_list	*tmp;
-
-	tmp = stack;
-	min = stack;
-	while (tmp)
-	{
-		if (*((int *)(tmp->content)) < *((int *)(min->content)))
-			min = tmp;
-		tmp = tmp->next;
-	}
-	return (min);
-}
-
-t_list	*get_max(t_list *stack)
-{
-	t_list	*max;
-	t_list	*tmp;
-
-	tmp = stack;
-	max = stack;
-	while (tmp)
-	{
-		if (*((int *)(tmp->content)) > *((int *)(max->content)))
-			max = tmp;
-		tmp = tmp->next;
-	}
-	return (max);
-}
 
 int	get_lst_index(t_list *stack_a, t_list *lst)
 {
@@ -94,5 +62,22 @@ void	move_lst_on_top_of_b(t_list **stack_b, t_list **operations, int index)
 	{
 		while (index-- > 0)
 			ft_rb(stack_b, operations);
+	}
+}
+
+void	display_struct(t_list *lst, char data, char *text)
+{
+	t_list	*tmp;
+
+	tmp = lst;
+	if (!tmp)
+		ft_printf("struct is empty\n");
+	while (tmp)
+	{
+		if (data == 'd')
+			ft_printf("%s: %d\n", text, *((int *)(tmp->content)));
+		if (data == 's')
+			ft_printf("%s: %s\n", text, tmp->content);
+		tmp = tmp->next;
 	}
 }

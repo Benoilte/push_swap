@@ -6,11 +6,10 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:52:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/01 06:16:44 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:20:37 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "libft.h"
 
 

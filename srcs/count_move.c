@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/22 08:32:02 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/08 08:56:02 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	find_new_position_in_stack_b(t_list *lst, t_list *stack)
 	t_list	*max;
 
 	index = -1;
+	if (ft_lstsize(stack) == 0)
+		return (0);
 	min = get_min(stack);
 	max = get_max(stack);
 	if (*((int *)(lst->content)) < *((int *)(min->content)))

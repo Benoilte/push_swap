@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/22 08:50:55 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:19:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,7 @@ int	ints_are_uniq(t_list *stack_a)
 		while (tmp2)
 		{
 			if (*((int *)(tmp1->content)) == *((int *)(tmp2->content)))
-			{
-				ft_printf("tmp1: %d - tmp2: %d\n", *((int *)(tmp1->content)), *((int *)(tmp2->content)));
 				return (ft_error());
-			}
 			tmp2 = tmp2->next;
 		}
 		tmp1 = tmp1->next;

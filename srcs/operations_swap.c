@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:01:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/19 19:42:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:49:41 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ ss : sa and sb at the same time.
 void	ft_swap(t_list **stack)
 {
 	t_list	*tmp;
-	int		size;
 
 	tmp = *stack;
 	*stack = tmp->next;
@@ -40,8 +39,11 @@ void	ft_sa(t_list **stack_a, t_list **operations)
 	if (ft_lstsize(*stack_a) < 2)
 		return ;
 	ft_swap(stack_a);
-	operation = ft_strdup("sa\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
+	if (operations)
+	{
+		operation = ft_strdup("sa\n");
+		ft_lstadd_back(operations, ft_lstnew(operation));
+	}
 }
 
 void	ft_sb(t_list **stack_b, t_list **operations)
@@ -51,8 +53,11 @@ void	ft_sb(t_list **stack_b, t_list **operations)
 	if (ft_lstsize(*stack_b) < 2)
 		return ;
 	ft_swap(stack_b);
-	operation = ft_strdup("sb\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
+	if (operations)
+	{
+		operation = ft_strdup("sb\n");
+		ft_lstadd_back(operations, ft_lstnew(operation));
+	}
 }
 
 void	ft_ss(t_list **stack_a, t_list **stack_b, t_list **operations)
@@ -63,6 +68,9 @@ void	ft_ss(t_list **stack_a, t_list **stack_b, t_list **operations)
 		return ;
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	operation = ft_strdup("ss\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
+	if (operations)
+	{
+		operation = ft_strdup("ss\n");
+		ft_lstadd_back(operations, ft_lstnew(operation));
+	}
 }

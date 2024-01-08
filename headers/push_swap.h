@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/22 10:42:18 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:01:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 
 // push_swap.c
 
-void	insert_int_in_stack(t_list **stack_a, int argc, int i, char **argv);
 void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations);
 void	print_operations(t_list *operations);
 
-void	display_struct(t_list *lst, char data, char *text);
+// fill_stack_a.c
+
+void	insert_int_in_stack(t_list **stack_a, int argc, int i, char **argv);
 
 // sort_small_stack.c
 
@@ -57,17 +58,24 @@ int		find_new_position_in_stack_a(t_list *lst, t_list *stack);
 
 int		is_sorted(t_list *stack_a);
 int		is_sorted_not_ordered(t_list *stack_a);
+
+// find_range.c
+
 void	find_biggest_sorted_range(t_list *stack, t_list **range);
 int		count_sorted_range_size(t_list *stack, t_list *lst, t_list *min);
 void	copy_range(t_list *stack, t_list *first, int size, t_list **range);
 
-// push_swap_algo_utils.c
+// find_min_max.c
 
 t_list	*get_min(t_list *stack);
 t_list	*get_max(t_list *stack);
+
+// push_swap_algo_utils.c
+
 void	move_lst_on_top_of_a(t_list **stack_a, t_list **operations, int index);
 void	move_lst_on_top_of_b(t_list **stack_b, t_list **operations, int index);
 int		get_lst_index(t_list *stack_a, t_list *lst);
+void	display_struct(t_list *lst, char data, char *text);
 
 // operations_push.c
 
@@ -112,6 +120,7 @@ int		ft_error(void);
 // safe_free.c
 
 void	*free_strstr(char **numbers);
+void	free_stack(t_list **stack_a, t_list **stack_b);
 void	del(void *content);
 
 #endif

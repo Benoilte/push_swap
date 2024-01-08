@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/22 11:46:11 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/08 18:02:15 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 {
 	t_list	*stack_b;
 	t_list	*range;
-	t_list	*cheapest;
 	int		min_pos;
 
 	stack_b = NULL;
 	range = NULL;
+	// ft_printf("min_pos: %d\n", *((int *)((get_min(*stack_a))->content)));
 	if (is_sorted_not_ordered(*stack_a))
 	{
 		min_pos = get_lst_index(*stack_a, get_min(*stack_a));
@@ -35,14 +35,15 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 		return ;
 	}
 	find_biggest_sorted_range(*stack_a, &range);
-	display_struct(range, 'd', "range");
-	ft_pb(&stack_b, stack_a, operations);
-	ft_pb(&stack_b, stack_a, operations);
+	// display_struct(range, 'd', "range");
 	while ((ft_lstsize(*stack_a) > 3) && (is_sorted_not_ordered(*stack_a) == 0) && (is_sorted(*stack_a) == 0))
 		move_a_to_b(stack_a, &stack_b, operations, range);
-	display_struct(*stack_a, 'd', "stack_a");
 	if (ft_lstsize(*stack_a) == 3)
 		sort_stack_of_3(stack_a, operations);
+	else 
+		move_lst_on_top_of_a(stack_a, operations, get_lst_index(*stack_a, get_min(*stack_a)));
+	// display_struct(*stack_a, 'd', "stack_a");
+	// display_struct(stack_b, 'd', "stack_b");
 	while (ft_lstsize(stack_b) > 0)
 		move_b_to_a(&stack_b, stack_a, operations);
 	min_pos = get_lst_index(*stack_a, get_min(*stack_a));
@@ -50,7 +51,7 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 	ft_lstclear(&range, &del);
 }
 
-void	move_a_to_b(t_list **out, t_list **in, t_list **operations, t_list *range)
+void	move_a_to_b(t_list **out, t_list **in, t_list **op, t_list *range)
 {
 	int		out_size;
 	int		in_size;
@@ -63,23 +64,30 @@ void	move_a_to_b(t_list **out, t_list **in, t_list **operations, t_list *range)
 	pos.out = get_lst_index(*out, cheapest);
 	pos.in = find_new_position_in_stack_b(cheapest, *in);
 	if ((pos.out > (out_size / 2)) && (pos.in > (in_size / 2)))
-		reverse_both(out, in, pos, operations);
+	{
+		reverse_both(out, in, pos, op);
+		if ((ft_lstsize(*out) - pos.out) > (ft_lstsize(*in) - pos.in))
+			move_lst_on_top_of_a(out, op, pos.out + (ft_lstsize(*in) - pos.in));
+		else if ((ft_lstsize(*out) - pos.out) < (ft_lstsize(*in) - pos.in))
+			move_lst_on_top_of_b(in, op, pos.in + (ft_lstsize(*out) - pos.out));
+	}
 	else if ((pos.out <= (out_size / 2)) && (pos.in <= (in_size / 2)))
-		rotate_both(out, in, pos, operations);
+	{
+		rotate_both(out, in, pos, op);
+		if (pos.out > pos.in)
+			move_lst_on_top_of_a(out, op, pos.out - pos.in);
+		else if (pos.out < pos.in)
+			move_lst_on_top_of_b(in, op, pos.in - pos.out);
+	}
 	else
 	{
-		move_lst_on_top_of_a(out, operations, pos.out);
-		move_lst_on_top_of_b(in, operations, pos.in);
-		return ;
+		move_lst_on_top_of_a(out, op, pos.out);
+		move_lst_on_top_of_b(in, op, pos.in);
 	}
-	if (pos.in > pos.out)
-		move_lst_on_top_of_b(in, operations, pos.in - pos.out);
-	else if (pos.out > pos.in)
-		move_lst_on_top_of_a(out, operations, pos.out - pos.in);
-	ft_pb(in, out, operations);
+	ft_pb(in, out, op);
 }
 
-void	move_b_to_a(t_list **out, t_list **in, t_list **operations)
+void	move_b_to_a(t_list **out, t_list **in, t_list **op)
 {
 	int		out_size;
 	int		in_size;
@@ -91,21 +99,35 @@ void	move_b_to_a(t_list **out, t_list **in, t_list **operations)
 	in_size = ft_lstsize(*in);
 	pos.out = get_lst_index(*out, cheapest);
 	pos.in = find_new_position_in_stack_a(cheapest, *in);
+	// if (*((int *)(cheapest->content)) == 67)
+	// {
+	// 	ft_printf("pos.in: %d\n", pos.in);
+	// 	ft_printf("pos.out: %d\n", pos.out);
+	// 	display_struct(*in, 'd', "stack_a");
+	// 	display_struct(*out, 'd', "stack_b");
+	// }
 	if ((pos.out > (out_size / 2)) && (pos.in > (in_size / 2)))
-		reverse_both(out, in, pos, operations);
+	{
+		reverse_both(out, in, pos, op);
+		if ((ft_lstsize(*out) - pos.out) > (ft_lstsize(*in) - pos.in))
+			move_lst_on_top_of_b(out, op, pos.out + (ft_lstsize(*in) - pos.in));
+		else if ((ft_lstsize(*out) - pos.out) < (ft_lstsize(*in) - pos.in))
+			move_lst_on_top_of_a(in, op, pos.in + (ft_lstsize(*out) - pos.out));
+	}
 	else if ((pos.out <= (out_size / 2)) && (pos.in <= (in_size / 2)))
-		rotate_both(out, in, pos, operations);
+	{
+		rotate_both(out, in, pos, op);
+		if (pos.out > pos.in)
+			move_lst_on_top_of_b(out, op, pos.out - pos.in);
+		else if (pos.out < pos.in)
+			move_lst_on_top_of_a(in, op, pos.in - pos.out);
+	}
 	else
 	{
-		move_lst_on_top_of_a(in, operations, pos.in);
-		move_lst_on_top_of_b(out, operations, pos.out);
-		return ;
+		move_lst_on_top_of_a(in, op, pos.in);
+		move_lst_on_top_of_b(out, op, pos.out);
 	}
-	if (pos.in > pos.out)
-		move_lst_on_top_of_a(in, operations, pos.out - pos.in);
-	else if (pos.out > pos.in)
-		move_lst_on_top_of_b(out, operations, pos.in - pos.out);
-	ft_pa(in, out, operations);
+	ft_pa(in, out, op);
 }
 
 t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner, t_list *range)
@@ -115,7 +137,6 @@ t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner, t_
 	int		move;
 
 	tmp = stack_out;
-	// display_struct(stack_out, 'd', "stack_a");
 	while (tmp && ft_include(tmp, range))
 		tmp = tmp->next;
 	move = count_move(tmp, stack_out, stack_in, inner);
