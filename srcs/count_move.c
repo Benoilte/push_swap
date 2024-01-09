@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 08:56:02 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:04:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char inner)
 	if ((pos.out > (ft_lstsize(stack_out) / 2)))
 	{
 		if ((pos.in > (ft_lstsize(stack_in) / 2)))
-			return (count_move_with_shortcut(lst_in_size, lst_out_size) + 1);
+			return (count_move_with_shortcut(lst_in_size - pos.in, lst_out_size - pos.out) + 1);
 		else
 			return (pos.in + (lst_out_size - pos.out) + 1);
 	}

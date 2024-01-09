@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 16:01:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:36:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ typedef struct s_index
 	int			out;
 	int			in;
 }		t_index;
+
+// push_swap_algo_ben.c
+
+void	sort_algo_ben(t_list **stack_a, t_list **operations);
+void	move_b_to_a_ben(t_list **out, t_list **in, t_list **op);
 
 // count_move.c
 

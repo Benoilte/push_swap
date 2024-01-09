@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 18:02:15 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:57:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,18 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 
 	stack_b = NULL;
 	range = NULL;
-	// ft_printf("min_pos: %d\n", *((int *)((get_min(*stack_a))->content)));
 	if (is_sorted_not_ordered(*stack_a))
 	{
 		min_pos = get_lst_index(*stack_a, get_min(*stack_a));
 		move_lst_on_top_of_a(stack_a, operations, min_pos);
 		return ;
 	}
-	find_biggest_sorted_range(*stack_a, &range);
-	// display_struct(range, 'd', "range");
+	ft_pb(&stack_b, stack_a, operations);
+	ft_pb(&stack_b, stack_a, operations);
 	while ((ft_lstsize(*stack_a) > 3) && (is_sorted_not_ordered(*stack_a) == 0) && (is_sorted(*stack_a) == 0))
 		move_a_to_b(stack_a, &stack_b, operations, range);
 	if (ft_lstsize(*stack_a) == 3)
 		sort_stack_of_3(stack_a, operations);
-	else 
-		move_lst_on_top_of_a(stack_a, operations, get_lst_index(*stack_a, get_min(*stack_a)));
-	// display_struct(*stack_a, 'd', "stack_a");
-	// display_struct(stack_b, 'd', "stack_b");
 	while (ft_lstsize(stack_b) > 0)
 		move_b_to_a(&stack_b, stack_a, operations);
 	min_pos = get_lst_index(*stack_a, get_min(*stack_a));
@@ -99,13 +94,6 @@ void	move_b_to_a(t_list **out, t_list **in, t_list **op)
 	in_size = ft_lstsize(*in);
 	pos.out = get_lst_index(*out, cheapest);
 	pos.in = find_new_position_in_stack_a(cheapest, *in);
-	// if (*((int *)(cheapest->content)) == 67)
-	// {
-	// 	ft_printf("pos.in: %d\n", pos.in);
-	// 	ft_printf("pos.out: %d\n", pos.out);
-	// 	display_struct(*in, 'd', "stack_a");
-	// 	display_struct(*out, 'd', "stack_b");
-	// }
 	if ((pos.out > (out_size / 2)) && (pos.in > (in_size / 2)))
 	{
 		reverse_both(out, in, pos, op);
