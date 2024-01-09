@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 14:04:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:13:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ Comparer si il y a une similitude de ra - rb ou rra - rrb operation.
 
 int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char inner)
 {
-	int		lst_out_size;
-	int		lst_in_size;
+	int		out_size;
+	int		in_size;
 	t_index	pos;
 
-	lst_out_size = ft_lstsize(stack_out);
-	lst_in_size = ft_lstsize(stack_in);
+	out_size = ft_lstsize(stack_out);
+	in_size = ft_lstsize(stack_in);
 	pos.out = get_lst_index(stack_out, lst);
 	if (inner == 'a')
 		pos.in = find_new_position_in_stack_a(lst, stack_in);
@@ -40,20 +40,20 @@ int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char inner)
 	if ((pos.out > (ft_lstsize(stack_out) / 2)))
 	{
 		if ((pos.in > (ft_lstsize(stack_in) / 2)))
-			return (count_move_with_shortcut(lst_in_size - pos.in, lst_out_size - pos.out) + 1);
+			return (bigger_number(in_size - pos.in, out_size - pos.out) + 1);
 		else
-			return (pos.in + (lst_out_size - pos.out) + 1);
+			return (pos.in + (out_size - pos.out) + 1);
 	}
 	else
 	{
 		if ((pos.in <= (ft_lstsize(stack_in) / 2)))
-			return (count_move_with_shortcut(pos.in, pos.out) + 1);
+			return (bigger_number(pos.in, pos.out) + 1);
 		else
-			return ((lst_in_size - pos.in) + pos.out + 1);
+			return ((in_size - pos.in) + pos.out + 1);
 	}
 }
 
-int	count_move_with_shortcut(int index_in, int index_out)
+int	bigger_number(int index_in, int index_out)
 {
 	if (index_in > index_out)
 		return (index_in);

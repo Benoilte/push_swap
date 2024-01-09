@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 13:36:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:00:11 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 // push_swap.c
 
-void	sort_stack(t_list **stack_a, t_list **stack_b, t_list **operations);
+void	sort_stack(t_list **stack_a, t_list **operations);
 void	print_operations(t_list *operations);
 
 // fill_stack_a.c
@@ -55,7 +55,7 @@ void	move_b_to_a_ben(t_list **out, t_list **in, t_list **op);
 // count_move.c
 
 int		count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char inner);
-int		count_move_with_shortcut(int index_in, int index_out);
+int		bigger_number(int index_in, int index_out);
 int		find_new_position_in_stack_b(t_list *lst, t_list *stack);
 int		find_new_position_in_stack_a(t_list *lst, t_list *stack);
 

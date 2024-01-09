@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 15:19:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:01:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	input_is_valid(int argc, char **argv)
 		}
 		else
 		{
-			if (string_is_valid(argv[i]))
+			if (int_is_valid(argv[i]))
 				i++;
 			else
 				return (ft_error());

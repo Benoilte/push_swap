@@ -8,14 +8,17 @@ echo "$GREEN STANDARD WORKING INPUT $NONE"
 echo ""
 echo "./push_swap 1 3 5 +9 20 -4 50 60 04 08 => $GREEN OK $NONE"
 ./push_swap 1 3 5 +9 20 -4 50 60 04 08
+echo "$GREEN"; ./push_swap 1 3 5 +9 20 -4 50 60 04 08 | ./checker 1 3 5 +9 20 -4 50 60 04 08; echo "$NONE"
 
 echo ""
 echo "./push_swap '3 4 6 8 9 74 -56 +495' => $GREEN OK $NONE"
 ./push_swap "3 4 6 8 9 74 -56 +495"
+echo "$GREEN"; ./push_swap "3 4 6 8 9 74 -56 +495" | ./checker "3 4 6 8 9 74 -56 +495"; echo "$NONE"
 
 echo ""
 echo "./push_swap '95 99 -9 10 9' => $GREEN OK $NONE"
 ./push_swap "95 99 -9 10 9"
+echo "$GREEN"; ./push_swap "95 99 -9 10 9" | ./checker "95 99 -9 10 9"; echo "$NONE"
 
 echo ""
 echo "$RED STANDARD ERROR INPUT $NONE"
@@ -58,18 +61,22 @@ echo "$GREEN INT_MAX INT_MIN WORKING INPUT $NONE"
 echo ""
 echo "./push_swap 2147483647 2 4 7 => $GREEN OK $NONE"
 ./push_swap 2147483647 2 4 7
+echo "$GREEN"; ./push_swap 2147483647 2 4 7 | ./checker 2147483647 2 4 7; echo "$NONE"
 
 echo ""
 echo "./push_swap 99 -2147483648 23 545 => $GREEN OK $NONE"
 ./push_swap 99 -2147483648 23 545
+echo "$GREEN"; ./push_swap 99 -2147483648 23 545 | ./checker 99 -2147483648 23 545; echo "$NONE"
 
 echo ""
 echo "./push_swap '2147483647 843 56544 24394' => $GREEN OK $NONE"
 ./push_swap "2147483647 843 56544 24394"
+echo "$GREEN"; ./push_swap "2147483647 843 56544 24394" | ./checker "2147483647 843 56544 24394"; echo "$NONE"
 
 echo ""
 echo "./push_swap '2147483647 843 56544 24394' => $GREEN OK $NONE"
 ./push_swap "2147483647 843 56544 24394"
+echo "$GREEN"; ./push_swap "2147483647 843 56544 24394" | ./checker "2147483647 843 56544 24394"; echo "$NONE"
 
 echo ""
 echo "$RED INT_MAX INT_MIN ERROR INPUT $NONE"
@@ -92,3 +99,4 @@ echo "$GREEN MIXED STRING INT WORKING INPUT $NONE"
 echo ""
 echo "./push_swap '1 2 4 3' 76 90 '348' 05 => $GREEN OK $NONE"
 ./push_swap "1 2 4 3" 76 90 "348" 05
+echo "$GREEN"; ./push_swap "1 2 4 3" 76 90 "348" 05 | ./checker "1 2 4 3" 76 90 "348" 05; echo "$NONE"
