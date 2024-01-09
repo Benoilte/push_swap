@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:36:13 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 18:04:37 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 10:34:15 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	// op_is_not_performed = 1;
 	if (argc >= 2)
 	{
 		if (input_is_valid(argc, argv))
 			insert_int_in_stack(&stack_a, argc, 1, argv);
 		else
 			return (0);
-		// display_struct(stack_a, 'd', "checker_in");
 		if (ints_are_uniq(stack_a))
 		{
 			op_is_not_performed = checker_sort_stack(&stack_a, &stack_b);
@@ -38,7 +36,6 @@ int	main(int argc, char **argv)
 			}
 			checker_is_stack_sorted(stack_a, stack_b);
 		}
-		// display_struct(stack_a, 'd', "ckecker_out");
 	}
 	free_stack(&stack_a, &stack_b);
 	return (0);
@@ -51,18 +48,12 @@ int	checker_sort_stack(t_list **stack_a, t_list **stack_b)
 
 	line = get_next_line(0);
 	op_is_not_performed = 1;
-	ft_printf("op: %s", line);
 	while (line)
 	{
-		ft_printf("op: %s", line);
 		op_is_not_performed = checker_perform_op(stack_a, stack_b, line);
-		if (op_is_not_performed)
-		{
-			ft_printf("op: %s", line);
-			free(line);
-			return (1);
-		}
 		free(line);
+		if (op_is_not_performed)
+			return (1);
 		line = get_next_line(0);
 	}
 	return (0);
@@ -70,7 +61,13 @@ int	checker_sort_stack(t_list **stack_a, t_list **stack_b)
 
 int	checker_perform_op(t_list **stack_a, t_list **stack_b, char *op)
 {
-	if (ft_strncmp(op, "pa\n", ft_strlen(op)) == 0)
+	if (ft_strncmp(op, "sa\n", ft_strlen(op)) == 0)
+		ft_sa(stack_a, NULL);
+	else if (ft_strncmp(op, "sb\n", ft_strlen(op)) == 0)
+		ft_sb(stack_b, NULL);
+	else if (ft_strncmp(op, "ss\n", ft_strlen(op)) == 0)
+		ft_ss(stack_a, stack_b, NULL);
+	else if (ft_strncmp(op, "pa\n", ft_strlen(op)) == 0)
 		ft_pa(stack_a, stack_b, NULL);
 	else if (ft_strncmp(op, "pb\n", ft_strlen(op)) == 0)
 		ft_pb(stack_b, stack_a, NULL);

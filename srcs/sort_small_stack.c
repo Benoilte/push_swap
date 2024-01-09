@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:58:49 by bebrandt          #+#    #+#             */
-/*   Updated: 2023/12/20 10:49:58 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 10:40:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ void	sort_stack_of_4_or_5(t_list **stack_a, t_list **operations)
 	min_pos = get_lst_index(*stack_a, get_min(*stack_a));
 	move_lst_on_top_of_a(stack_a, operations, min_pos);
 	if (is_sorted(*stack_a))
-	{
-		ft_printf("\033[0;36mstack of 5 or 4 is sorted\n\033[0m");
 		return ;
-	}
 	while (ft_lstsize(*stack_a) > 3)
 	{
 		min_pos = get_lst_index(*stack_a, get_min(*stack_a));

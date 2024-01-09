@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/01/08 17:48:18 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/01/09 11:40:28 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ PUSH_SRCS	=	push_swap.c  fill_stack_a.c sort_small_stack.c push_swap_algo.c \
 				push_swap_algo_utils.c input_validation.c operations_swap.c \
 				operations_push.c operations_reverse.c operations_rotate.c \
 				error.c safe_free.c count_move.c check_sorted_stack.c find_range.c \
-				find_min_max.c
+				find_min_max.c push_swap_algo_ben.c
 	
 PUSH_OBJS = $(PUSH_SRCS:.c=.o)
 
