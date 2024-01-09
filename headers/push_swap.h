@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 16:10:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:57:13 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ void	ft_rb(t_list **stack_b, t_list **operations);
 void	ft_rr(t_list **stack_a, t_list **stack_b, t_list **operations);
 void	rotate_both(t_list **out, t_list **in, t_index pos, t_list **op);
 
+// operations_rotate_utils.c
+
+void	rot_ov_a_to_b(t_list **out, t_list **in, t_list **op, t_index pos);
+void	rot_ov_b_to_a(t_list **out, t_list **in, t_list **op, t_index pos);
+
 // operations_reverse.c
 
 void	ft_reverse(t_list **stack);
@@ -98,6 +103,11 @@ void	ft_rra(t_list **stack_a, t_list **operations);
 void	ft_rrb(t_list **stack_b, t_list **operations);
 void	ft_rrr(t_list **stack_a, t_list **stack_b, t_list **operations);
 void	reverse_both(t_list **out, t_list **in, t_index pos, t_list **op);
+
+// operations_reverse_utils.c
+
+void	rev_ov_a_to_b(t_list **out, t_list **in, t_list **op, t_index pos);
+void	rev_ov_b_to_a(t_list **out, t_list **in, t_list **op, t_index pos);
 
 // input_validation.c
 

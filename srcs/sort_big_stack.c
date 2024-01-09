@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 15:44:34 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:59:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,31 +47,22 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 
 void	move_a_to_b(t_list **out, t_list **in, t_list **op)
 {
-	int		out_size;
-	int		in_size;
 	t_list	*cheapest;
 	t_index	pos;
 
 	cheapest = find_cheapest_number(*out, *in, 'b');
-	out_size = ft_lstsize(*out);
-	in_size = ft_lstsize(*in);
 	pos.out = get_lst_index(*out, cheapest);
 	pos.in = find_new_position_in_stack_b(cheapest, *in);
-	if ((pos.out > (out_size / 2)) && (pos.in > (in_size / 2)))
+	if ((pos.out > (ft_lstsize(*out) / 2)) && (pos.in > (ft_lstsize(*in) / 2)))
 	{
 		reverse_both(out, in, pos, op);
-		if ((ft_lstsize(*out) - pos.out) > (ft_lstsize(*in) - pos.in))
-			move_lst_on_top_of_a(out, op, pos.out + (ft_lstsize(*in) - pos.in));
-		else if ((ft_lstsize(*out) - pos.out) < (ft_lstsize(*in) - pos.in))
-			move_lst_on_top_of_b(in, op, pos.in + (ft_lstsize(*out) - pos.out));
+		rev_ov_a_to_b(out, in, op, pos);
 	}
-	else if ((pos.out <= (out_size / 2)) && (pos.in <= (in_size / 2)))
+	else if ((pos.out <= (ft_lstsize(*out) / 2))
+		&& (pos.in <= (ft_lstsize(*in) / 2)))
 	{
 		rotate_both(out, in, pos, op);
-		if (pos.out > pos.in)
-			move_lst_on_top_of_a(out, op, pos.out - pos.in);
-		else if (pos.out < pos.in)
-			move_lst_on_top_of_b(in, op, pos.in - pos.out);
+		rot_ov_a_to_b(out, in, op, pos);
 	}
 	else
 	{
@@ -83,31 +74,22 @@ void	move_a_to_b(t_list **out, t_list **in, t_list **op)
 
 void	move_b_to_a(t_list **out, t_list **in, t_list **op)
 {
-	int		out_size;
-	int		in_size;
 	t_list	*cheapest;
 	t_index	pos;
 
 	cheapest = find_cheapest_number(*out, *in, 'a');
-	out_size = ft_lstsize(*out);
-	in_size = ft_lstsize(*in);
 	pos.out = get_lst_index(*out, cheapest);
 	pos.in = find_new_position_in_stack_a(cheapest, *in);
-	if ((pos.out > (out_size / 2)) && (pos.in > (in_size / 2)))
+	if ((pos.out > (ft_lstsize(*out) / 2)) && (pos.in > (ft_lstsize(*in) / 2)))
 	{
 		reverse_both(out, in, pos, op);
-		if ((ft_lstsize(*out) - pos.out) > (ft_lstsize(*in) - pos.in))
-			move_lst_on_top_of_b(out, op, pos.out + (ft_lstsize(*in) - pos.in));
-		else if ((ft_lstsize(*out) - pos.out) < (ft_lstsize(*in) - pos.in))
-			move_lst_on_top_of_a(in, op, pos.in + (ft_lstsize(*out) - pos.out));
+		rev_ov_b_to_a(out, in, op, pos);
 	}
-	else if ((pos.out <= (out_size / 2)) && (pos.in <= (in_size / 2)))
+	else if ((pos.out <= (ft_lstsize(*out) / 2))
+		&& (pos.in <= (ft_lstsize(*in) / 2)))
 	{
 		rotate_both(out, in, pos, op);
-		if (pos.out > pos.in)
-			move_lst_on_top_of_b(out, op, pos.out - pos.in);
-		else if (pos.out < pos.in)
-			move_lst_on_top_of_a(in, op, pos.in - pos.out);
+		rot_ov_b_to_a(out, in, op, pos);
 	}
 	else
 	{
