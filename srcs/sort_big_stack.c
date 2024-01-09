@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 15:16:34 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:44:34 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ sur la stack a et la stack b
 void	sort_big_stack(t_list **stack_a, t_list **operations)
 {
 	t_list	*stack_b;
-	t_list	*range;
 	int		min_pos;
 
 	stack_b = NULL;
-	range = NULL;
 	if (is_sorted_not_ordered(*stack_a))
 	{
 		min_pos = get_lst_index(*stack_a, get_min(*stack_a));
@@ -35,25 +33,26 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 	}
 	ft_pb(&stack_b, stack_a, operations);
 	ft_pb(&stack_b, stack_a, operations);
-	while ((ft_lstsize(*stack_a) > 3) && (is_sorted_not_ordered(*stack_a) == 0) && (is_sorted(*stack_a) == 0))
-		move_a_to_b(stack_a, &stack_b, operations, range);
+	while ((ft_lstsize(*stack_a) > 3)
+		&& (is_sorted_not_ordered(*stack_a) == 0)
+		&& (is_sorted(*stack_a) == 0))
+		move_a_to_b(stack_a, &stack_b, operations);
 	if (ft_lstsize(*stack_a) == 3)
 		sort_stack_of_3(stack_a, operations);
 	while (ft_lstsize(stack_b) > 0)
 		move_b_to_a(&stack_b, stack_a, operations);
 	min_pos = get_lst_index(*stack_a, get_min(*stack_a));
 	move_lst_on_top_of_a(stack_a, operations, min_pos);
-	ft_lstclear(&range, &del);
 }
 
-void	move_a_to_b(t_list **out, t_list **in, t_list **op, t_list *range)
+void	move_a_to_b(t_list **out, t_list **in, t_list **op)
 {
 	int		out_size;
 	int		in_size;
 	t_list	*cheapest;
 	t_index	pos;
 
-	cheapest = find_cheapest_number(*out, *in, 'b', range);
+	cheapest = find_cheapest_number(*out, *in, 'b');
 	out_size = ft_lstsize(*out);
 	in_size = ft_lstsize(*in);
 	pos.out = get_lst_index(*out, cheapest);
@@ -89,7 +88,7 @@ void	move_b_to_a(t_list **out, t_list **in, t_list **op)
 	t_list	*cheapest;
 	t_index	pos;
 
-	cheapest = find_cheapest_number(*out, *in, 'a', NULL);
+	cheapest = find_cheapest_number(*out, *in, 'a');
 	out_size = ft_lstsize(*out);
 	in_size = ft_lstsize(*in);
 	pos.out = get_lst_index(*out, cheapest);
@@ -118,43 +117,23 @@ void	move_b_to_a(t_list **out, t_list **in, t_list **op)
 	ft_pa(in, out, op);
 }
 
-t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner, t_list *range)
+t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char in)
 {
 	t_list	*tmp;
 	t_list	*cheapest;
 	int		move;
 
 	tmp = stack_out;
-	while (tmp && ft_include(tmp, range))
-		tmp = tmp->next;
-	move = count_move(tmp, stack_out, stack_in, inner);
+	move = count_move(tmp, stack_out, stack_in, in);
 	cheapest = tmp;
 	while (tmp)
 	{
-		while (tmp && ft_include(tmp, range))
-			tmp = tmp->next;
-		if (!tmp)
-			break ;
-		if ((count_move(tmp, stack_out, stack_in, inner) < move))
+		if ((count_move(tmp, stack_out, stack_in, in) < move))
 		{
-			move = count_move(tmp, stack_out, stack_in, inner);
+			move = count_move(tmp, stack_out, stack_in, in);
 			cheapest = tmp;
 		}
 		tmp = tmp->next;
 	}
 	return (cheapest);
-}
-
-int	ft_include(t_list *lst, t_list *range)
-{
-	t_list	*tmp;
-
-	tmp = range;
-	while (tmp)
-	{
-		if (*((int *)(lst->content)) == *((int *)(tmp->content)))
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
 }

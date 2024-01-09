@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:00:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 16:25:21 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:29:22 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,55 +95,3 @@ void	rotate_both(t_list **out, t_list **in, t_index pos, t_list **op)
 		}
 	}
 }
-
-/*
-void	ft_rotate(t_list **stack)
-{
-	t_list	*last;
-	t_list	*second_to_last;
-	t_list	*tmp;
-
-	if (ft_lstsize(*stack) < 3)
-	{
-		ft_swap(stack);
-		return ;
-	}
-	second_to_last = *stack;
-	while (second_to_last->next->next)
-		second_to_last = second_to_last->next;
-	last = ft_lstlast(*stack);
-	tmp = *stack;
-	*stack = last;
-	(*stack)->next = tmp->next;
-	second_to_last->next = tmp;
-	tmp->next = NULL;
-}
-
-void	ft_ra(t_list **stack_a, t_list **operations)
-{
-	char	*operation;
-
-	ft_rotate(stack_a);
-	operation = ft_strdup("ra\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
-}
-
-void	ft_rb(t_list **stack_b, t_list **operations)
-{
-	char	*operation;
-
-	ft_rotate(stack_b);
-	operation = ft_strdup("rb\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
-}
-
-void	ft_rr(t_list **stack_a, t_list **stack_b, t_list **operations)
-{
-	char	*operation;
-
-	ft_rotate(stack_a);
-	ft_rotate(stack_b);
-	operation = ft_strdup("rb\n");
-	ft_lstadd_back(operations, ft_lstnew(operation));
-}
-*/

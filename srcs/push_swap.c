@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 14:59:44 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:10:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,20 @@ void	print_operations(t_list *operations)
 	while (tmp)
 	{
 		ft_printf("%s", tmp->content);
+		tmp = tmp->next;
+	}
+}
+
+void	ft_lstdisplay(t_list *lst, char *text)
+{
+	t_list	*tmp;
+
+	tmp = lst;
+	if (!tmp)
+		ft_printf("struct is empty\n");
+	while (tmp)
+	{
+		ft_printf("%s: %d\n", text, *((int *)(tmp->content)));
 		tmp = tmp->next;
 	}
 }

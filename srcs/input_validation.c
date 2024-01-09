@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 15:01:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:30:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	The program must work with several numerical arguments
 		./push_swap 1 3 5 +9 20 -4 50 60 04 08
 	
-	The program also works if you receive a single character list as a parameter
+	The program works if you receive a single character list as a parameter
 		./push_swap "3 4 6 8 9 74 -56 +495"
 
 	The program should NOT work if it encounters another character
@@ -45,7 +45,8 @@
 		./push_swap "214748364748385 28 47 29"
 			these examples should return "Error\n"
 			
-	The program should work when strings and int are mixed. Error condition shoul work the same.
+	The program should work when strings and int are mixed. 
+	Error condition shoul work the same.
 	./push_swap "1 2 4 3" 76 90 "348 05
 */
 

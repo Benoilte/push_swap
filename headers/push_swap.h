@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:42:59 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 15:00:11 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:10:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 void	sort_stack(t_list **stack_a, t_list **operations);
 void	print_operations(t_list *operations);
+void	ft_lstdisplay(t_list *lst, char *text);
 
 // fill_stack_a.c
 
@@ -36,10 +37,9 @@ void	sort_stack_of_4_or_5(t_list **stack_a, t_list **operations);
 // push_swap_algo.c
 
 void	sort_big_stack(t_list **stack_a, t_list **operations);
-void	move_a_to_b(t_list **out, t_list **in, t_list **operations, t_list *range);
+void	move_a_to_b(t_list **out, t_list **in, t_list **operations);
 void	move_b_to_a(t_list **out, t_list **in, t_list **operations);
-t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char inner, t_list *range);
-int		ft_include(t_list *lst, t_list *range);
+t_list	*find_cheapest_number(t_list *stack_out, t_list *stack_in, char in);
 
 typedef struct s_index
 {
@@ -47,14 +47,9 @@ typedef struct s_index
 	int			in;
 }		t_index;
 
-// push_swap_algo_ben.c
-
-void	sort_algo_ben(t_list **stack_a, t_list **operations);
-void	move_b_to_a_ben(t_list **out, t_list **in, t_list **op);
-
 // count_move.c
 
-int		count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char inner);
+int		count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char in);
 int		bigger_number(int index_in, int index_out);
 int		find_new_position_in_stack_b(t_list *lst, t_list *stack);
 int		find_new_position_in_stack_a(t_list *lst, t_list *stack);
@@ -63,12 +58,6 @@ int		find_new_position_in_stack_a(t_list *lst, t_list *stack);
 
 int		is_sorted(t_list *stack_a);
 int		is_sorted_not_ordered(t_list *stack_a);
-
-// find_range.c
-
-void	find_biggest_sorted_range(t_list *stack, t_list **range);
-int		count_sorted_range_size(t_list *stack, t_list *lst, t_list *min);
-void	copy_range(t_list *stack, t_list *first, int size, t_list **range);
 
 // find_min_max.c
 
@@ -80,7 +69,6 @@ t_list	*get_max(t_list *stack);
 void	move_lst_on_top_of_a(t_list **stack_a, t_list **operations, int index);
 void	move_lst_on_top_of_b(t_list **stack_b, t_list **operations, int index);
 int		get_lst_index(t_list *stack_a, t_list *lst);
-void	display_struct(t_list *lst, char data, char *text);
 
 // operations_push.c
 

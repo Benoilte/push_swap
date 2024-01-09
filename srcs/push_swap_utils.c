@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:22:34 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 15:18:07 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:08:58 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,5 @@ void	move_lst_on_top_of_b(t_list **stack_b, t_list **operations, int index)
 	{
 		while (index-- > 0)
 			ft_rb(stack_b, operations);
-	}
-}
-
-void	display_struct(t_list *lst, char data, char *text)
-{
-	t_list	*tmp;
-
-	tmp = lst;
-	if (!tmp)
-		ft_printf("struct is empty\n");
-	while (tmp)
-	{
-		if (data == 'd')
-			ft_printf("%s: %d\n", text, *((int *)(tmp->content)));
-		if (data == 's')
-			ft_printf("%s: %s\n", text, tmp->content);
-		tmp = tmp->next;
 	}
 }
