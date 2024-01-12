@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:42:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 16:05:53 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 22:04:32 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include	<unistd.h>
 # include	<stdlib.h>
 
+# include "ft_printf.h"
 # include "get_next_line.h"
 
 // libft function corresponding to the man in libc

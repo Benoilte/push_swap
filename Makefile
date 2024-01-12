@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/01/12 19:41:38 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/01/12 22:18:07 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,15 +32,11 @@ CHECK_OBJS = $(CHECK_SRCS:.c=.o)
 
 CHECK_OBJ = $(addprefix $(OBJ_DIR),$(CHECK_OBJS))
 
-LIBFT_DIR		=	libft
+LIBFT_DIR		=	libft/
 
 LIBFT_NAME		=	libft.a
 
-PRINTF_DIR		=	libftprintf
-
-PRINTF_NAME		=	libftprintf.a
-
-HDRS		=	-I headers/.
+HDRS		=	-I .
 
 CC			=	gcc
 
@@ -52,9 +48,6 @@ LIB			=	ranlib
 
 RM			=	rm -f
 
-LIB_DIR		=	libft/
-PRINTF_DIR	=	printf/
-SRC_DIR		=	srcs/
 OBJ_DIR		=	objs/
 
 RED			=	\033[0;31m
@@ -66,29 +59,27 @@ all: $(NAME)
 bonus: $(CHECK_NAME)
 
 $(CHECK_NAME): $(CHECK_OBJ)
-	@make -C $(PRINTF_DIR) --silent
-	@gcc -o $(CHECK_NAME) $(CHECK_OBJ) -L $(PRINTF_DIR) -lftprintf
+	@make -C $(LIBFT_DIR) --silent
+	@gcc -o $(CHECK_NAME) $(CHECK_OBJ) -L $(LIBFT_DIR) -lft
 	@echo "$(GREEN)##### checker compiling finished! #####$(NONE)"
 
 $(NAME): $(PUSH_OBJ)
-	@make -C $(PRINTF_DIR) --silent
-	@gcc -o $(NAME) $(PUSH_OBJ) -L $(PRINTF_DIR) -lftprintf
+	@make -C $(LIBFT_DIR) --silent
+	@gcc -o $(NAME) $(PUSH_OBJ) -L $(LIBFT_DIR) -lft
 	@echo "$(GREEN)##### push_swap compiling finished! #####$(NONE)"
 	
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: %.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(GREEN)##### Creating" [ $@ ] " #####$(NONE)"
 	@gcc $(CFLAGS) -o $@ -c $< $(HDRS)
 
 clean:
-	@make -C $(LIB_DIR) clean  --silent
-	@make -C $(PRINTF_DIR) clean  --silent
+	@make -C $(LIBFT_DIR) clean  --silent
 	@rm -f $(CHECK_OBJ) $(PUSH_OBJ)
 	@echo "$(RED)##### Removed object files #####$(NONE)"
 
 fclean: clean
-	@make -C $(LIB_DIR) fclean  --silent
-	@make -C $(PRINTF_DIR) fclean  --silent
+	@make -C $(LIBFT_DIR) fclean  --silent
 	@rm -f $(CHECK_NAME) $(NAME)
 	@echo "$(RED)##### Removed binary files #####$(NONE)"
 

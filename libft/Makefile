@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 17:15:49 by bebrandt          #+#    #+#              #
-#    Updated: 2023/12/12 12:36:37 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/01/12 21:39:43 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,12 @@ SRCS	=	ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 			ft_get_next_line.c ft_get_next_line_utils.c \
 			ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-			ft_atoli.c
+			ft_atoli.c \
+			ft_printf.c flag_utils.c ft_is_specifier.c \
+			ft_print_char.c ft_print_str.c ft_print_int.c ft_print_uint.c \
+			ft_print_arg.c ft_print_hex.c ft_print_ptr.c ft_print_percent.c \
+			ft_print_decimal.c ft_print_width_fd.c ft_print_precision_fd.c \
+			ft_print_hex_format.c set_lst.c
 
 OBJS		:=	$(SRCS:.c=.o)
 
