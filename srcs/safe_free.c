@@ -6,12 +6,15 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:51:54 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 15:57:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:51:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
+/*
+Free the string tab memory
+*/
 void	*free_strstr(char **numbers)
 {
 	int	i;
@@ -27,6 +30,9 @@ void	*free_strstr(char **numbers)
 	return (NULL);
 }
 
+/*
+Free the stack memory
+*/
 void	free_stack(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) > 0)
@@ -35,6 +41,9 @@ void	free_stack(t_list **stack_a, t_list **stack_b)
 		ft_lstclear(stack_b, &del);
 }
 
+/*
+Free the structure content memory
+*/
 void	del(void *content)
 {
 	free(content);

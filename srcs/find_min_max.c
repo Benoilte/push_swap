@@ -6,12 +6,15 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:47:09 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 17:04:51 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:56:53 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
+/*
+Return the smaller number of the stack
+*/
 t_list	*get_min(t_list *stack)
 {
 	t_list	*min;
@@ -28,6 +31,9 @@ t_list	*get_min(t_list *stack)
 	return (min);
 }
 
+/*
+Return the bigger number of the stack
+*/
 t_list	*get_max(t_list *stack)
 {
 	t_list	*max;

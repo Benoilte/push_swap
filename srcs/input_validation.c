@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:56:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 15:30:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:44:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	The program must work with several numerical arguments
 		./push_swap 1 3 5 +9 20 -4 50 60 04 08
-	
+
 	The program works if you receive a single character list as a parameter
 		./push_swap "3 4 6 8 9 74 -56 +495"
 
@@ -34,7 +34,7 @@
 			these examples should return "Error\n"
 		./push_swap "95 99 -9 10 9"
 			this example should work because -9 & 9 are not equal
-			
+
 	The program should work with INT MAX & INT MIN
 		./push_swap 2147483647 2 4 7
 		./push_swap 99 -2147483648 23 545
@@ -44,8 +44,8 @@
 		./push_swap -2147483647765 4 5
 		./push_swap "214748364748385 28 47 29"
 			these examples should return "Error\n"
-			
-	The program should work when strings and int are mixed. 
+
+	The program should work when strings and int are mixed.
 	Error condition shoul work the same.
 	./push_swap "1 2 4 3" 76 90 "348 05
 */
@@ -96,6 +96,11 @@ int	string_is_valid(char *str)
 	return (1);
 }
 
+/*
+Check if ints passed as argument are valids.
+Range between INT_MIN and INT_MAX
+Ints start with digits or + or - signs and folowed only by digits
+*/
 int	int_is_valid(char *str)
 {
 	int		i;
@@ -117,6 +122,9 @@ int	int_is_valid(char *str)
 	return (1);
 }
 
+/*
+Check if there is no duplicate number in the stack
+*/
 int	ints_are_uniq(t_list *stack_a)
 {
 	t_list	*tmp1;

@@ -6,22 +6,22 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 16:10:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:40:28 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 /*
-1. check if input are valid number
+1. check if input are valid numbers
 	1.1 if input is not valid, return "ERROR/n" and exit the program
 
 2. insert number in stack a
 
-3. sort stack a with available instruction
-	3.1 insert operation in lst
-	3.2 if duplicates number are compared, return "ERROR/n" and exit the program
+3. check if all number increment == there is no duplicates
+	3.1 if there is duplicate number return ERROR\n and exit the program
 
-4. check if all number increment == there is no duplicates
+4. sort stack a with available instruction
+	4.1 insert operation in lst
 
 5. print operations followed by a \n
 */
@@ -55,14 +55,17 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+/*
+If stack is already oredered return.
+Applied an Algorithm according to the stack size.
+(different size: 2 / 3 / 4 or 5 / > 5)
+*/
 void	sort_stack(t_list **stack_a, t_list **operations)
 {
 	int	stack_size;
 
 	stack_size = ft_lstsize(*stack_a);
 	if (is_sorted(*stack_a))
-		return ;
-	if (stack_size == 1)
 		return ;
 	else if (stack_size == 2)
 		sort_stack_of_2(stack_a, 'a', operations);

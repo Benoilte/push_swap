@@ -6,12 +6,15 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 20:35:38 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 15:44:59 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:29:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
+/*
+Check if the stack is already sorted
+*/
 int	is_sorted(t_list *stack_a)
 {
 	t_list	*next;
@@ -29,6 +32,10 @@ int	is_sorted(t_list *stack_a)
 	return (1);
 }
 
+/*
+Check if the stack is already sorted
+but the min number are not at the top of the stack
+*/
 int	is_sorted_not_ordered(t_list *stack_a)
 {
 	t_list	*min;

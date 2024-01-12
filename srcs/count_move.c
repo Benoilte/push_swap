@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:27:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 15:41:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:38:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ lst en bonne position (ordrée)
 Comparer si il y a une similitude de ra - rb ou rra - rrb operation.
 */
 
+/*
+Count move needed to push lst in stack_in in a ordered way
+Argument < char in > indicate in which stack we push the lst element.
+*/
 int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char in)
 {
 	int		out_size;
@@ -53,6 +57,9 @@ int	count_move(t_list *lst, t_list *stack_out, t_list *stack_in, char in)
 	}
 }
 
+/*
+Return the bigger number between index_in and index_out
+*/
 int	bigger_number(int index_in, int index_out)
 {
 	if (index_in > index_out)
@@ -61,14 +68,15 @@ int	bigger_number(int index_in, int index_out)
 		return (index_out);
 }
 
+/*
+Find new position in stack b to insert element in descending order
+*/
 int	find_new_position_in_stack_b(t_list *lst, t_list *stack)
 {
-	int		index;
 	t_list	*tmp;
 	t_list	*min;
 	t_list	*max;
 
-	index = -1;
 	if (ft_lstsize(stack) == 0)
 		return (0);
 	min = get_min(stack);
@@ -88,14 +96,15 @@ int	find_new_position_in_stack_b(t_list *lst, t_list *stack)
 	return (0);
 }
 
+/*
+Find new position in stack a to insert element in ascending order
+*/
 int	find_new_position_in_stack_a(t_list *lst, t_list *stack)
 {
-	int		index;
 	t_list	*tmp;
 	t_list	*min;
 	t_list	*max;
 
-	index = -1;
 	min = get_min(stack);
 	max = get_max(stack);
 	if (*((int *)(lst->content)) < *((int *)(min->content)))
