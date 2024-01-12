@@ -6,11 +6,11 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/01/12 18:08:51 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/01/12 19:41:38 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PUSH_NAME	=	push_swap
+NAME	=	push_swap
 
 PUSH_SRCS	=	push_swap.c  fill_stack_a.c sort_small_stack.c sort_big_stack.c \
 				push_swap_utils.c input_validation.c operations_swap.c \
@@ -61,7 +61,7 @@ RED			=	\033[0;31m
 GREEN		=	\033[0;32m
 NONE		=	\033[0m
 
-all: $(PUSH_NAME)
+all: $(NAME)
 
 bonus: $(CHECK_NAME)
 
@@ -70,9 +70,9 @@ $(CHECK_NAME): $(CHECK_OBJ)
 	@gcc -o $(CHECK_NAME) $(CHECK_OBJ) -L $(PRINTF_DIR) -lftprintf
 	@echo "$(GREEN)##### checker compiling finished! #####$(NONE)"
 
-$(PUSH_NAME): $(PUSH_OBJ)
+$(NAME): $(PUSH_OBJ)
 	@make -C $(PRINTF_DIR) --silent
-	@gcc -o $(PUSH_NAME) $(PUSH_OBJ) -L $(PRINTF_DIR) -lftprintf
+	@gcc -o $(NAME) $(PUSH_OBJ) -L $(PRINTF_DIR) -lftprintf
 	@echo "$(GREEN)##### push_swap compiling finished! #####$(NONE)"
 	
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -89,7 +89,7 @@ clean:
 fclean: clean
 	@make -C $(LIB_DIR) fclean  --silent
 	@make -C $(PRINTF_DIR) fclean  --silent
-	@rm -f $(CHECK_NAME) $(PUSH_NAME)
+	@rm -f $(CHECK_NAME) $(NAME)
 	@echo "$(RED)##### Removed binary files #####$(NONE)"
 
 re: fclean all
