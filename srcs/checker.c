@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:36:13 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 18:20:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 20:51:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		op_is_not_performed;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -42,16 +41,17 @@ int	main(int argc, char **argv)
 		if (input_is_valid(argc, argv))
 			insert_int_in_stack(&stack_a, argc, 1, argv);
 		else
-			return (0);
+			return (2);
 		if (ints_are_uniq(stack_a))
 		{
-			op_is_not_performed = checker_sort_stack(&stack_a, &stack_b);
-			if (op_is_not_performed)
-			{
-				free_stack(&stack_a, &stack_b);
-				return (ft_error());
-			}
+			if (checker_sort_stack(&stack_a, &stack_b))
+				return (2);
 			checker_is_stack_sorted(stack_a, stack_b);
+		}
+		else
+		{
+			free_stack(&stack_a, &stack_b);
+			return (2);
 		}
 	}
 	free_stack(&stack_a, &stack_b);
@@ -75,7 +75,11 @@ int	checker_sort_stack(t_list **stack_a, t_list **stack_b)
 		op_is_not_performed = checker_perform_op(stack_a, stack_b, line);
 		free(line);
 		if (op_is_not_performed)
+		{
+			free_stack(stack_a, stack_b);
+			ft_error();
 			return (1);
+		}
 		line = get_next_line(0);
 	}
 	return (0);

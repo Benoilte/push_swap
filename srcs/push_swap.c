@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 13:40:28 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 20:51:34 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		if (input_is_valid(argc, argv))
 			insert_int_in_stack(&stack_a, argc, 1, argv);
 		else
-			return (1);
+			return (2);
 		if (ints_are_uniq(stack_a))
 		{
 			sort_stack(&stack_a, &operations);
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 		else
 		{
 			ft_lstclear(&stack_a, &del);
-			return (1);
+			return (2);
 		}
 	}
 	ft_lstclear(&stack_a, &del);
