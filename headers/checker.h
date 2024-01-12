@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:59:17 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/08 16:03:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:20:56 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@
 int		checker_sort_stack(t_list **stack_a, t_list **stack_b);
 int		checker_perform_op(t_list **stack_a, t_list **stack_b, char *op);
 void	checker_is_stack_sorted(t_list *stack_a, t_list *stack_b);
-void	display_struct(t_list *lst, char data, char *text);
 
 #endif

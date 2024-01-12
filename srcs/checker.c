@@ -6,11 +6,28 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:36:13 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/09 10:34:15 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:20:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/checker.h"
+
+/*
+1. check if input are valid numbers
+	1.1 if input is not valid, return "ERROR/n" and exit the program
+
+2. insert number in stack a
+
+3. check if all number increment == there is no duplicates
+	3.1 if there is duplicate number return ERROR\n and exit the program
+
+4. sort stack a with operation send from ./push_swap program
+	4.1 if operation is not perform (operation does not exist) return ERROR\n
+
+5. Check if the stack_a is sorted
+	5.1 if stack_a return OK\n
+	5.2 if stack_a is not sorted or if stack_b is not empty return KO\n
+*/
 
 int	main(int argc, char **argv)
 {
@@ -41,6 +58,11 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+/*
+Sort stack_a and check if all operations are performed.
+Return 0 if all operation are performed
+Return 1 if an operation is not performed
+*/
 int	checker_sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	char	*line;
@@ -59,6 +81,11 @@ int	checker_sort_stack(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
+/*
+Perform operation send in argument
+Return 0 if all operation are performed
+Return 1 if an operation does not exist
+*/
 int	checker_perform_op(t_list **stack_a, t_list **stack_b, char *op)
 {
 	if (ft_strncmp(op, "sa\n", ft_strlen(op)) == 0)
@@ -88,27 +115,14 @@ int	checker_perform_op(t_list **stack_a, t_list **stack_b, char *op)
 	return (0);
 }
 
+/*
+If stack_a return OK\n
+If stack_a is not sorted or if stack_b is not empty return KO\n
+*/
 void	checker_is_stack_sorted(t_list *stack_a, t_list *stack_b)
 {
 	if (is_sorted(stack_a) && ft_lstsize(stack_b) == 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-}
-
-void	display_struct(t_list *lst, char data, char *text)
-{
-	t_list	*tmp;
-
-	tmp = lst;
-	if (!tmp)
-		ft_printf("struct is empty\n");
-	while (tmp)
-	{
-		if (data == 'd')
-			ft_printf("%s: %d\n", text, *((int *)(tmp->content)));
-		if (data == 's')
-			ft_printf("%s: %s\n", text, tmp->content);
-		tmp = tmp->next;
-	}
 }
