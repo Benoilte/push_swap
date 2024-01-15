@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:00:09 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:19:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/15 08:35:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	ft_rra(t_list **stack_a, t_list **operations)
 {
 	char	*operation;
 
+	if (ft_lstsize(*stack_a) < 2)
+		return ;
 	ft_reverse(stack_a);
 	if (operations)
 	{
@@ -56,6 +58,8 @@ void	ft_rrb(t_list **stack_b, t_list **operations)
 {
 	char	*operation;
 
+	if (ft_lstsize(*stack_b) < 2)
+		return ;
 	ft_reverse(stack_b);
 	if (operations)
 	{
@@ -68,6 +72,8 @@ void	ft_rrr(t_list **stack_a, t_list **stack_b, t_list **operations)
 {
 	char	*operation;
 
+	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b) < 2)
+		return ;
 	ft_reverse(stack_a);
 	ft_reverse(stack_b);
 	if (operations)
