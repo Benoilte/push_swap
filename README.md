@@ -123,6 +123,30 @@ The learning objectives of this project are rigor, use of C, and use of basic al
 - In every other case, it must display "KO" followed by a ’\n’ on the standard output.
 - In case of error, you must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments are not integers, some arguments are bigger than an integer, there are duplicates, an instruction doesn’t exist and/or is incorrectly formatted.
 
+# Method
+- I check if the stack is already sorted
+	- If yes: move the smaller value at the top of the stack
+	- If no: choose an Algorithm according to the length of the stack
+- Stack length of 2
+	- Swap the number if the smallest number is not at the top
+- Stack length of 3
+	- Compare each number with its position and execute operation needed.
+- Stack length of 4 and 5
+	- Push the smallest number from stack a to stack b, until stack a is bigger than 3
+		- Sort the 3 numbers of stack a
+		- Push back number from stack b to stack a
+- If stack length is bigger than 5
+	- I was inspired by the algorithm of [ayogun](https://github.com/ayogun) thatt he explains on his [Medium article](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
+	- 1. Start two push two integer from stack a to stack b
+	- 2. Find which integer cost the less operation to push it from stack a to stack b. sort stack b in descending order
+	- 3. Push the cheapest integer (according operations cost) from stack a to stack b
+	- 4. Do it until the stack a is ordered or only 3 numbers are staying in stack a
+	- 5. Repeat the point 2 and 3 but we push integer from stack b to stack a and we sort stack a in ascending order.
+	- 6. Do it until the stack b is empty
+	- 7. Move the smallest integer on the top of stack a
+
+
+
 # Result :slot_machine:
 <img width="163" alt="push_swap_score" src="https://github.com/Benoilte/push_swap/assets/104198121/20301089-082d-40c5-ab5e-bf5772fa430d">
 
