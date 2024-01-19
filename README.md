@@ -75,11 +75,46 @@ The learning objectives of this project are rigor, use of C, and use of basic al
 - The program must display the smallest list of instructions possible to sort the stack a, the smallest number being at the top.
 - Instructions must be separated by a ’\n’ and nothing else.
 - The goal is to sort the stack with the lowest possible number of operations. During the evaluation process, the number of instructions found by your program will be compared against a limit: the maximum number of operations tolerated. If your program either displays a longer list or if the numbers aren’t sorted properly, your grade will be 0.
+- If the stack is already sorted, the program must not display anything and give the prompt back.
+- Maximum number of operations to reach a score of 125 %:
+
+<table>
+	<thead>
+        <tr>
+            <th>Stack length</th>
+            <th>Max operations</th>
+        </tr>
+    </thead>
+    <tbody>
+	</thead>
+        <tr>
+            <td align="center">2</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td align="center">3</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td align="center">5</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td align="center">100</td>
+            <td>700</td>
+        </tr>
+        <tr>
+            <td align="center">500</td>
+            <td>5500</td>
+        </tr>
+    </tbody>
+</table>
+
 - If no parameters are specified, the program must not display anything and give the prompt back.
 - In case of error, it must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments aren’t integers, some arguments are bigger than an integer and/or there are duplicates.
 
   ### Forbidden
-	- Global variables are forbidden.
+	- Global variables.
 
 ## Bonus
 - Write a program named checker that takes as an argument the stack a formatted as a list of integers. The first argument should be at the top of the stack (be careful about the order). If no argument is given, it stops and displays nothing.
