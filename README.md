@@ -136,12 +136,12 @@ The learning objectives of this project are rigor, use of C, and use of basic al
 		- Sort the 3 numbers of stack a
 		- Push back number from stack b to stack a
 - If stack length is bigger than 5
-	- I was inspired by the algorithm of [ayogun](https://github.com/ayogun) thatt he explains on his [Medium article](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
+	- I was inspired by the algorithm of [ayogun](https://github.com/ayogun) that he explains on his [Medium article](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
 	- 1. Start two push two integer from stack a to stack b
 	- 2. Find which integer cost the less operation to push it from stack a to stack b. sort stack b in descending order
 	- 3. Push the cheapest integer (according operations cost) from stack a to stack b
 	- 4. Do it until the stack a is ordered or only 3 numbers are staying in stack a
-	- 5. Repeat the point 2 and 3 but we push integer from stack b to stack a and we sort stack a in ascending order.
+	- 5. Repeat the point b and c but we push integer from stack b to stack a and we sort stack a in ascending order.
 	- 6. Do it until the stack b is empty
 	- 7. Move the smallest integer on the top of stack a
 
