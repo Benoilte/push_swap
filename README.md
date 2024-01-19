@@ -89,6 +89,7 @@ The learning objectives of this project are rigor, use of C, and use of basic al
 - In case of error, you must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments are not integers, some arguments are bigger than an integer, there are duplicates, an instruction doesn’t exist and/or is incorrectly formatted.
 
 # Result :slot_machine:
+<img width="163" alt="push_swap_score" src="https://github.com/Benoilte/push_swap/assets/104198121/20301089-082d-40c5-ab5e-bf5772fa430d">
 
 
 # Usage
