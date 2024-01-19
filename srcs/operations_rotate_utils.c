@@ -6,14 +6,14 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:28:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:19:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:39:10 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../utils/push_swap.h"
 
 /*
-If stack had common rr operation continue to rotate 
+If stack had common rr operation continue to rotate
 stack_out or stack_in to order it in right position
 stack_a == stack_out // stack_b == stack_in
 */
@@ -26,7 +26,7 @@ void	rot_ov_a_to_b(t_list **out, t_list **in, t_list **op, t_index pos)
 }
 
 /*
-If stack had common rr operation continue to rotate 
+If stack had common rr operation continue to rotate
 stack_out or stack_in to order it in right position
 stack_a == stack_in // stack_b == stack_out
 */

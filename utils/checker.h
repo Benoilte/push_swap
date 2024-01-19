@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:59:17 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:08:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:40:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "limits.h"
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include "push_swap.h"
 
 // checker.c

@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 20:35:38 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:19:08 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:19:16 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../utils/push_swap.h"
 
 /*
 Check if the stack is already sorted

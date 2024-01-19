@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:47:09 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:19:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:19:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../utils/push_swap.h"
 
 /*
 Return the smaller number of the stack

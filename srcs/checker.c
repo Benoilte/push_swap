@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:36:13 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:19:15 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:18:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../utils/checker.h"
 
 /*
 1. check if input are valid numbers

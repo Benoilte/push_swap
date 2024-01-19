@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:20:14 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:39:54 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../utils/push_swap.h"
 
 /*
 apres avoir trouver le numéro qui coute le moins d'opération
@@ -24,18 +24,18 @@ sur la stack a et la stack b
 If th stack_a is sorted but not ordererd
 	- Move the smaller number to the top of stack_a
 
-Otherwise Push 2 first numbers in stack_b and Check all number 
-to find which one cost the minimum of operation to insert number 
+Otherwise Push 2 first numbers in stack_b and Check all number
+to find which one cost the minimum of operation to insert number
 in descending number in stack_b
 
-Stop to push element in stack_b when stack_a egal 3 or if stack_a is sorted 
+Stop to push element in stack_b when stack_a egal 3 or if stack_a is sorted
 or if stack_a is sorted but not ordered
 
 If stack_a == 3 sorted the 3 elements
 
 Do the operation inverse to move element from stack_b to stack_a
 
-Move Smaller number on the top 
+Move Smaller number on the top
 */
 
 void	sort_big_stack(t_list **stack_a, t_list **operations)
@@ -66,7 +66,7 @@ void	sort_big_stack(t_list **stack_a, t_list **operations)
 
 /*
 Find element who cost less operations to move element from stack_a to stack_b
-Stack_b will be ordered in descending order 
+Stack_b will be ordered in descending order
 */
 void	move_a_to_b(t_list **out, t_list **in, t_list **op)
 {
@@ -97,7 +97,7 @@ void	move_a_to_b(t_list **out, t_list **in, t_list **op)
 
 /*
 Find element who cost less operations to move element from stack_b to stack_a
-Stack_a will be ordered in ascending order 
+Stack_a will be ordered in ascending order
 */
 void	move_b_to_a(t_list **out, t_list **in, t_list **op)
 {

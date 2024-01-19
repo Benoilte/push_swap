@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:58:49 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:20:17 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:40:00 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../utils/push_swap.h"
 
 void	sort_stack_of_2(t_list **stack, char order, t_list **operations)
 {

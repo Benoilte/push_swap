@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:01:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:19:56 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:39:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../utils/push_swap.h"
 
 /*
 sa (swap a): Swap the first 2 elements at the top of stack a.

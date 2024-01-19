@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:25:38 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:19:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:19:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../utils/push_swap.h"
 
 void	insert_int_in_stack(t_list **stack_a, int argc, int i, char **argv)
 {

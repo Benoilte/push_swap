@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:46:25 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/12 22:20:03 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:39:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../utils/push_swap.h"
 /*
 1. check if input are valid numbers
 	1.1 if input is not valid, return "ERROR/n" and exit the program
