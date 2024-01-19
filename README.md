@@ -94,7 +94,10 @@ The learning objectives of this project are rigor, use of C, and use of basic al
 
 # Usage
 
-``make``
+Compile the ./push_swap program with the following command:
+```bash
+make
+```
 
 Run the program with
 ```bash
@@ -130,7 +133,10 @@ Return exemple:
 
 # Advance usage
 
-``make``
+Compile the ./checker program with the following command:
+```bash
+make bonus
+```
 
 Run the program
 ```bash
@@ -153,4 +159,28 @@ Return exemple:
 
 ```text
 Error
+```
+
+# Test
+Compile the ./push_swap and the ./checker program with the following command:
+```bash
+make && make bonus
+```
+
+### Stack length: 3
+Run the following bash command:
+```bash
+./test/test_3.sh
+```
+
+### Stack length: 100
+Run the following bash command:
+```bash
+./test/100_test.sh
+```
+
+### Stack length: 500
+Run the following bash command:
+```bash
+./test/500_test.sh
 ```
